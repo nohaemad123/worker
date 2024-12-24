@@ -1,0 +1,51 @@
+<section class="w-full p-10">
+
+    <div class="title_actions_btn">
+
+        <div class="flex justify-between mt-2 mb-6">
+            <h1 class="text-2xl font-bold text-[#0B0311] mt-4">
+                {{ "services.view.title" | transloco }}
+            </h1>
+            <div class="flex items-center">
+                <!-- <button
+                    (click)="navigateToDeletedNationality()"
+                    class="border rounded-md border-[#9D90A7] w-60 text-xl py-3 me-5 deleted_button hover:border-2 hover:text-bold hover:border-primary"
+                >
+                   <span>{{ "services.view.buttons.delete" | transloco }}</span>
+                    <i class="pi pi-arrow-left ms-4"></i>
+                </button> -->
+                <button *ngIf="addPermission" (click)="navigateToAddNewService()"
+                    class="border-2 rounded-md add_new_button border-[#9D90A7] w-60 text-xl py-3 bg-[#4F008D] text-white">
+                    <i class="ml-4 pi pi-plus-circle"></i>
+                    <span>{{ "services.view.buttons.add" | transloco }}</span>
+                </button>
+            </div>
+        </div>
+
+        <form [formGroup]="searchForm">
+            <div class="flex  bg-[#FDFBFE] p-4 mb-6 rounded-md w-full">
+                <!-- name -->
+                <div class="w-full">
+                    <label class="block mb-2 font-bold" for="">
+                        {{ "services.view.filter.name" | transloco }}
+                    </label>
+
+                    <p-iconField iconPosition="left">
+                        <p-inputIcon styleClass="pi pi-search " class="text-4xl" />
+                        <input type="text" name="name" formControlName="name" (keyup)="search()" pInputText
+                            placeholder="{{ 'services.view.filter.name' | transloco }}"
+                            class="border-2 bg-[#e4dde985] w-[95%] border-gray-100 rounded-lg p-2 pe-8 h-12" />
+                    </p-iconField>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="">
+        <app-data-table [tableConfig]="tableConfig" (paginationEmitter)="onPaginationChange($event)"
+            (actionEmitter)="onActionClick($event)" (sortcal)="onSort($event)"></app-data-table>
+        <div></div>
+    </div>
+
+</section>

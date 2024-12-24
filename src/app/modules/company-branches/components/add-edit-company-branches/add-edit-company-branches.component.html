@@ -1,0 +1,211 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Company-Branches">{{ "companyBranches.add_edit.breadcrumb.link" | transloco }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span *ngIf="!isEdit">{{ "companyBranches.add_edit.breadcrumb.add_title" | transloco }}</span>
+                    <span *ngIf="isEdit">{{ "companyBranches.add_edit.breadcrumb.edit_title" | transloco }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form (ngSubmit)="addEditCompanyBranchesSubmit()" [formGroup]="CompanyBranchesForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    <span *ngIf="!isEdit">{{ "companyBranches.add_edit.breadcrumb.add_title" | transloco }}</span>
+                    <span *ngIf="isEdit">{{ "companyBranches.add_edit.breadcrumb.edit_title" | transloco }}</span>
+                </h3>
+
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+
+                    <!-- area -->
+                    <div class="">
+                        <label for="street" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Street_Area" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="street" type="text" name="street" formControlName="street"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'companyBranches.add_edit.form.labels.Street_Area' | transloco }}" />
+                        <div *ngIf="
+                                CompanyBranchesForm.controls.street.invalid &&
+                                (CompanyBranchesForm.controls.street.dirty || CompanyBranchesForm.controls.street.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "companyBranches.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="">
+                        <label for="address" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Address" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="address" type="text" name="address" formControlName="address"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'companyBranches.add_edit.form.labels.Address' | transloco }}" />
+                        <div *ngIf="
+                                CompanyBranchesForm.controls.address.invalid &&
+                                (CompanyBranchesForm.controls.address.dirty ||CompanyBranchesForm.controls.address.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "companyBranches.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- email -->
+                    <div class="">
+                        <label for="email" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Email" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="email" type="email" name="email" formControlName="email"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'companyBranches.add_edit.form.labels.Email' | transloco }}" />
+                        <div *ngIf="
+                                CompanyBranchesForm.controls.email.invalid &&
+                                (CompanyBranchesForm.controls.email.dirty || CompanyBranchesForm.controls.email.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b *ngIf="CompanyBranchesForm.controls['email'].errors?.['required']">{{
+                                "companyBranches.add_edit.form.labels.required" | transloco }}*</b>
+                            <b *ngIf="CompanyBranchesForm.controls['email'].errors?.['pattern']">{{
+                                "companyBranches.add_edit.form.labels.email_true" | transloco }}*</b>
+
+                        </div>
+                    </div>
+
+                    <!-- phone -->
+                    <div class="">
+                        <label for="phone" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Phone" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="phone" type="tel" name="phone" formControlName="phone"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'companyBranches.add_edit.form.labels.Phone' | transloco }}" />
+                        <div *ngIf="
+                                CompanyBranchesForm.controls.phone.invalid &&
+                                (CompanyBranchesForm.controls.phone.dirty ||CompanyBranchesForm.controls.phone.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "companyBranches.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                        <div
+                        *ngIf="
+                            CompanyBranchesForm.controls.phone
+                                .hasError('pattern') &&
+                            (CompanyBranchesForm.controls.phone
+                                .dirty ||
+                                CompanyBranchesForm.controls.phone
+                                    .touched)
+                        "
+                        class="mt-4 text-danger ms-2"
+                    >
+                        <b>
+                            {{
+                                "companyBranches.add_edit.form.labels.valid_phoneNumber"
+                                    | transloco
+                            }}
+                            *</b
+                        >
+                    </div>
+                    </div>
+
+                    <!-- company Id -->
+                    <div class="">
+                        <label for="companyId" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Choose_the_company" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-building custom-icon"></i>
+                            <p-dropdown id="companyId" [options]="companiesList" formControlName="companyId"
+                                name="companyId" optionLabel="companyName" optionValue="id"
+                                placeholder="{{ 'companyBranches.add_edit.form.labels.Choose_the_company' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!-- branch Id -->
+                    <div class="">
+                        <label for="branchId" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Choose_the_branch" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-building custom-icon"></i>
+                            <p-dropdown id="branchId" [options]="branchesList" formControlName="branchId"
+                                name="branchId" optionLabel="name" optionValue="id"
+                                placeholder="{{ 'companyBranches.add_edit.form.labels.Choose_the_branch' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+
+                    <!-- city Id -->
+                    <div class="">
+                        <label for="cityId" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.Choose_the_city" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-building custom-icon"></i>
+                            <p-dropdown id="cityId" [options]="citiesList" formControlName="cityId" name="cityId"
+                                optionLabel="name" optionValue="id"
+                                placeholder="{{ 'companyBranches.add_edit.form.labels.Choose_the_city' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="">
+                        <label for="location" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companyBranches.add_edit.form.labels.choose_location" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative flex items-center">
+                            <i class="mr-2 pi pi-map-marker custom-icon"></i>
+                            <input id="location" type="text" name="location" 
+                            [value]="[CompanyBranchesForm.controls.Latitude.value + ',' + CompanyBranchesForm.controls.Longitude.value]"
+                            readonly
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-8 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'companyBranches.add_edit.form.labels.choose_location' | transloco }}" />
+                            <button role="button" id="locationButton" type="button" class="text-white rounded-lg bg-primary text-[14px] w-48 h-12 mt-2"
+                            (click)="detectLocation()">
+                                {{ "companyBranches.add_edit.form.labels.detect_location" | transloco }}
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button id="submitButton" type="submit" [disabled]="CompanyBranchesForm.invalid"
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span *ngIf="!isEdit">
+                            {{ "companyBranches.add_edit.form.labels.add_submit" | transloco }}</span>
+                        <span *ngIf="isEdit">
+                            {{ "companyBranches.add_edit.form.labels.edit_submit" | transloco }}</span>
+                    </button>
+
+                    <button id="cancelButton" type="button" (click)="cancelCompanyBranches()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{ "companyBranches.add_edit.form.labels.cancel" | transloco }}
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</section>

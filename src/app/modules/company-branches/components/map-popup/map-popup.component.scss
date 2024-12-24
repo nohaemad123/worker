@@ -1,0 +1,18 @@
+.auto-complete-wrapper {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    gap: 1em;
+    
+}
+::ng-deep {
+    .container {
+        .map-container {
+            width: 37vw !important;
+            height: 45vh !important;
+        }
+    }
+    .cdk-overlay-container {
+        z-index: 1103 !important; /* Increase the z-index */
+    }
+}

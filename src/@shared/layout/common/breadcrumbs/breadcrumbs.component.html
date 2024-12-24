@@ -1,0 +1,22 @@
+<div class="flex h-full justify-center" *ngIf="breadCrumbData?.length">
+    <div class="flex-wrap items-center hidden font-medium sm:flex">
+        <div class="flex items-center ml-1 whitespace-nowrap" *ngFor="let item of breadCrumbData; let i = index">
+            <mat-icon *ngIf="i < breadCrumbData.length && i > 0"
+                class="icon-size-5 text-secondary"
+                [svgIcon]="currentLang === 'en' ? 'heroicons_mini:chevron-right' : 'heroicons_mini:chevron-left'"></mat-icon>
+            <a class="ml-1 cursor-pointer text-primary-500" [routerLink]="item.link" *ngIf="i < breadCrumbData.length - 1">{{ item.name | transloco}}</a>
+            <span class="ml-1 text-secondary" *ngIf="i === breadCrumbData.length - 1">{{ item.name | transloco }}</span>
+
+        </div>
+    </div>
+    <div class="flex sm:hidden">
+        <a
+            class="inline-flex items-center -ml-1.5 text-secondary font-medium"
+            [routerLink]="'./..'">
+            <mat-icon
+                class="icon-size-5 text-secondary"
+                [svgIcon]="currentLang === 'en' ? 'heroicons_mini:chevron-left' : 'heroicons_mini:chevron-right'"></mat-icon>
+            <span class="ml-1">Back</span>
+        </a>
+    </div>
+</div>

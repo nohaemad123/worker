@@ -1,0 +1,22 @@
+{
+    "titles": {
+        "login_title": "Welcome to Amalh for services"
+
+    },
+    "form":{
+        "fields":
+            {
+                "name":"name",
+                "name_placeholder":"Name",
+                "email":"email",
+                "email_placeholder":"Email",
+                "password":"password",
+                "password_placeholder":"Password",
+                "confirm_password":"Confirm Password",
+                "confirm_password_placeholder":"Confirm Password",
+                "submit":"submit",
+                "congratulatuins_message":"congratulations..!",
+                "congratulatuins_desc":"Password changed successfully, please login."
+            }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "view": {
+        "title": "عرض العروض الموجودة على النظام",
+        "buttons": {
+            "delete": "العروض المحذوفة",
+            "add": "اضافة عرض"
+        },
+        "filter": {
+            "offer_code": "كود العرض",
+            "offer_name": "اسم العرض"
+        },
+        "table": {
+            "offer_code": "كود الباقة",
+            "offer_description": "وصف العرض",
+            "offer_name": "اسم الباقة",
+            "nationality": "الجنسية",
+            "service_name": "اسم الخدمة",
+            "discount": " الخصم",
+            "from_date": "تاريخ البدء",
+            "to_date": "تاريخ الإنتهاء"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "العروض",
+            "title": "اضافة عرض جديد"
+        },
+        "form": {
+            "labels": {
+                "code": "كود العرض",
+                "offer_discription": "وصف العرض",
+                "discount": " الخصم",
+                "from_date": "تاريخ البدء",
+                "to_date": "تاريخ الإنتهاء",
+                "nationality": "الجنسية",
+                "offer_nameAr": "إسم الباقة بالعربية",
+                "offer_nameEn": "إسم الباقة بالإنجليزية",
+                "offer_cost": "تكلفة الباقة",
+                "shift": "الوردية",
+                "service_name": "اختار الخدمة",
+                "city_name": "اختار المدينة",
+                "submit": "حفظ و اضافة عرض جديد",
+                "cancel": "الغاء",
+                "required": "هذا الحقل مطلوب"
+            }
+        }
+    },
+    "deleted": {
+        "title": "الشركات المحذوفة"
+    }
+}

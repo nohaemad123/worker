@@ -1,0 +1,39 @@
+{
+    "view": {
+        "title": "عرض انظمة الخدمات على النظام ",
+        "buttons": {
+            "add": "اضافة نظام خدمة"
+        },
+        "filter": {
+            "system_service_type": " نظام الخدمة"
+        },
+        "table": {
+            "name": "نظام الخدمة"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "انظمة الخدمات",
+            "add_title": "اضافة نظام خدمة",
+            "edit_title":"تعديل نظام الخدمة"
+        },
+        "form": {
+            "labels": {
+                "system_service_ar":"نظام الخدمة بالعربي",
+                "system_service_en":"نظام الخدمة بالانجليزي",
+                "required": "هذا الحقل مطلوب",
+                "add_submit": "حفظ و اضافة نظام خدمة",
+                "edit_submit": "تحديث البيانات",
+                "cancel": "الغاء"
+            },
+            "placeholders": {
+                "company": "الشركة",
+                "branch": " الفرع",
+                "customer": " العميل"
+            }
+        }
+    },
+    "deleted": {
+        "title": "الخدمات المحذوفة"
+    }
+}

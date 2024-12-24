@@ -1,0 +1,19 @@
+{
+    "breadcrumb": {
+        "link": "الملف الشخصي",
+        "title_view": "بيانات المستخدم"
+    },
+    "data": {
+        "name": "إسم المستخدم",
+        "email": "البريد الالكتروني",
+        "phone": "رقم الجوال",
+        "address": "العنوان",
+        "companyName": "اسم الشركة",
+        "branchName": "اسم الفرع",
+        "permission": "صلاحية المستخدم",
+        "Admin": "مدير النظام",
+        "EmployeeCompany": "موظف الشركة",
+        "Company": "شركة",
+        "User": "مستخدم"
+    }
+}

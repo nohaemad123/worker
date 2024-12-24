@@ -1,0 +1,59 @@
+table {
+    ng-select {
+        width: 120px;
+    }
+}
+
+::ng-deep {
+    .form-select {
+        .ng-select.ng-select-single .ng-select-container {
+            height: 48px;
+            min-height: 48px;
+            border-radius: 0.5rem !important;
+            border-width: 2px !important;
+            border-color: rgba(226, 232, 240, 1) !important;
+        }
+        .ng-arrow-wrapper {
+            height: 48px;
+            width: 42.6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ededed;
+            .ng-arrow {
+                border-width: 7px 7px 2.5px !important ;
+            }
+        }
+        .ng-select.ng-select-opened > .ng-select-container .ng-arrow {
+            border-width: 0 7px 7px !important            ;
+        }
+    }
+    .service-pricing-table-wrapper {
+        .ng-select.ng-select-single .ng-select-container {
+            height: 48px;
+            min-height: 48px;
+            border-radius: 0.5rem !important;
+            border-width: 2px !important;
+            border-color: rgba(226, 232, 240, 1) !important;
+        }
+        .ng-arrow-wrapper {
+            height: 48px;
+            width: 42.6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ededed;
+            .ng-arrow {
+                border-width: 7px 7px 2.5px !important ;
+            }
+        }
+        .ng-select.ng-select-opened > .ng-select-container .ng-arrow {
+            border-width: 0 7px 7px !important            ;
+        }
+    }
+    .service_pricing {
+        input.ng-invalid.ng-touched {
+            border: 1px solid red !important;
+        }
+    }
+}

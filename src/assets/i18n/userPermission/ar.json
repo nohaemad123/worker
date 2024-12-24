@@ -1,0 +1,67 @@
+{
+    "view": {
+        "title": "عرض صلاحيات المستخدمين",
+        "buttons": {
+            "delete": "صلاحيات المستخدمين المحذوفين",
+            "add": "اضافة صلاحية"
+        },
+        "filter": {
+            "user_code": "كود المستخدم",
+            "shift_name": "اسم الوردية",
+            "shift_code": "كود الوردية"
+        },
+        "table": {
+            "user_code": "كود المستخدم",
+            "user_name": "اسم المستخدم",
+            "user_permission": "صلاحية المستخدم",
+            "phone": "رقم الجوال",
+            "address": "العنوان",
+            "company_name": "اسم الشركة"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "صلاحيات المستخدمين",
+            "title": "اضافة مستخدم جديد",
+            "edit_title": "تعديل صلاحيات المستخدمين",
+            "add_title": "اضافة صلاحيات المستخدمين"
+        },
+        "form": {
+            "labels": {
+                "user_permission": "صلاحيات المستخدمين",
+                "user_name": "اسم المستخدم",
+                "submit": "تحديث البيانات",
+                "add_new":"إضافة صلاحية جديدة",
+                "cancel": "الغاء",
+                "required": "هذا الحقل مطلوب",
+                "Home": "الرئيسية",
+                "Companies": "الشركات",
+                "Branches": "الفروع",
+                "CompanyBranches": "افرع الشركات",
+                "Cities": "المدن",
+                "Regions": "الأحياء",
+                "Jobs": "الوظائف",
+                "Nationalities": "الجنسيات",
+                "Workers": "العمال",
+                "ProvidedServices": "الخدمات",
+                "ServicesTypes": "انواع الخدمات",
+                "ServicesSystems": "أنظمة الخدمات",
+                "ServicesPricing": "تسعير الخدمات",
+                "Offers": "الباقات والعروض",
+                "Shifts": "الورديات",
+                "Applications": "الطلبات",
+                "Users": "المستخدمين",
+                "UserPermissions": "صلاحيات المستخدمين",
+                "item": "البيان",
+                "add": "إضافة",
+                "edit": "تعديل",
+                "delete": "حذف",
+                "stop": "إيقاف",
+                "view": "عرض"
+            }
+        }
+    },
+    "deleted": {
+        "title": "الشركات المحذوفة"
+    }
+}

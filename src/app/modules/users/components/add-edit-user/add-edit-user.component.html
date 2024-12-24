@@ -1,0 +1,337 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Users">{{
+                        "users.add_edit.breadcrumb.link" | transloco
+                        }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span *ngIf="!userId">{{
+                        "users.add_edit.breadcrumb.title_add" | transloco
+                        }}</span>
+                    <span *ngIf="userId && mode != 'view'">{{
+                        "users.add_edit.breadcrumb.title_edit" | transloco
+                        }}</span>
+                    <span *ngIf="userId && mode == 'view'">{{
+                        "users.add_edit.breadcrumb.title_view" | transloco
+                        }}</span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditUserSubmit()" [formGroup]="userForm">
+            <div class="bg-[#fff] p-5 radius-[8px] mt-5">
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    <span *ngIf="!userId">{{
+                        "users.add_edit.breadcrumb.title_add" | transloco
+                        }}</span>
+                    <span *ngIf="userId && mode != 'view'">{{
+                        "users.add_edit.breadcrumb.title_edit" | transloco
+                        }}</span>
+                    <span *ngIf="userId && mode == 'view'">{{
+                        "users.add_edit.breadcrumb.title_view" | transloco
+                        }}</span>
+                </h3>
+                <div class="flex mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "users.add_edit.form.labels.name" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="name" formControlName="name"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'users.add_edit.form.labels.name' | transloco
+                            }}" />
+                        <div *ngIf="
+                             userForm.controls.name
+                                 .invalid &&
+                             (userForm.controls.name
+                                 .dirty ||
+                                 userForm.controls.name
+                                     .touched)
+                         " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "users.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="email" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "users.add_edit.form.labels.email" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="email" type="email" name="email" formControlName="email"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'users.add_edit.form.labels.email' | transloco }}" />
+                        <div *ngIf="
+                                userForm.controls.email.invalid &&
+                                (userForm.controls.email.dirty || userForm.controls.email.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b *ngIf="userForm.controls['email'].errors?.['required']">{{
+                                "users.add_edit.form.labels.required" | transloco }}*</b>
+                            <b *ngIf="userForm.controls['email'].errors?.['pattern']">{{
+                                "users.add_edit.form.labels.email_true" | transloco }}*</b>
+
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "users.add_edit.form.labels.phone" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="tel" name="phoneNumber" formControlName="phoneNumber"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'users.add_edit.form.labels.phone' | transloco
+                            }}" />
+                        <div *ngIf="
+                                  userForm.controls.phoneNumber
+                                      .hasError('required') &&
+                                  (userForm.controls.phoneNumber
+                                      .dirty ||
+                                      userForm.controls.phoneNumber
+                                          .touched)
+                              " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "users.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                        <div *ngIf="
+                                  userForm.controls.phoneNumber
+                                      .hasError('pattern') &&
+                                  (userForm.controls.phoneNumber
+                                      .dirty ||
+                                      userForm.controls.phoneNumber
+                                          .touched)
+                              " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "users.add_edit.form.labels.valid_phoneNumber"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "users.add_edit.form.labels.address" | transloco
+                            }}
+                            <!-- <span class="text-[#f00]">*</span> -->
+                        </label>
+                        <input type="text" name="address" formControlName="address"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'users.add_edit.form.labels.address' | transloco
+                            }}" />
+                    </div>
+                    <ng-container *ngIf="mode !== 'view'">
+                        <div class="">
+                            <label for="code" class="block w-full mb-2 text-[16px] font-medium whitespace-nowrap">
+                                {{
+                                "users.add_edit.form.labels.password"
+                                | transloco
+                                }}
+                                <span class="text-[#f00]" *ngIf="!userId">*</span>
+                            </label>
+                            <p-password id="password" class="pe-[30px]" placeholder="{{
+                                    'users.add_edit.form.labels.password'
+                                        | transloco
+                                }}" formControlName="password" [toggleMask]="true" [feedback]="false" />
+                            <div *ngIf="
+                                        userForm.controls.password
+                                            .invalid &&
+                                        (userForm.controls.password
+                                            .dirty ||
+                                            userForm.controls.password
+                                                .touched)
+                                    " class="mt-4 text-danger ms-2">
+                                <b>
+                                    {{
+                                    "users.add_edit.form.labels.required"
+                                    | transloco
+                                    }}
+                                    *</b>
+                            </div>
+                        </div>
+                        <div class="">
+                            <label for="code" class="mb-2 block w-full text-[16px] font-medium whitespace-nowrap">
+                                {{
+                                "users.add_edit.form.labels.confirm_password"
+                                | transloco
+                                }}
+                                <span class="text-[#f00]" *ngIf="!userId">*</span>
+                            </label>
+                            <p-password id="password" placeholder="{{
+                                    'users.add_edit.form.labels.confirm_password'
+                                        | transloco
+                                }}" formControlName="confirmPassword" [toggleMask]="true" [feedback]="false" />
+                            <div *ngIf="
+                                  userForm.controls.confirmPassword
+                                      .hasError('required') &&
+                                  (userForm.controls.confirmPassword
+                                      .dirty ||
+                                      userForm.controls.confirmPassword
+                                          .touched)
+                              " class="mt-4 text-danger ms-2">
+                                <b>
+                                    {{
+                                    "users.add_edit.form.labels.required"
+                                    | transloco
+                                    }}
+                                    *</b>
+                            </div>
+                            <div *ngIf="
+                                  userForm.controls.confirmPassword
+                                      .hasError('mustMatch') &&
+                                  (userForm.controls.confirmPassword
+                                      .dirty ||
+                                      userForm.controls.confirmPassword
+                                          .touched)
+                              " class="mt-4 text-danger ms-2">
+                                <b>
+                                    {{
+                                    "users.add_edit.form.labels.mustMatch"
+                                    | transloco
+                                    }}
+                                    *</b>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+
+                <div class="flex gap-5 mt-3">
+                    <div class="w-1/2">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "users.add_edit.form.labels.choose_company"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative user-form-select">
+                            <ng-select class="mt-2" [clearable]="false" (change)="onSelectCompany($event)"
+                                placeholder="{{'users.add_edit.form.labels.choose_company' | transloco }}"
+                                [loading]="companiesLoading" formControlName="companyId" bindValue="id"
+                                [readonly]="mode == 'view'"
+                                (search)="onCompaniesSearch($event)" (clear)="onClearCompanies($event)"
+                                (scroll)="onCompaniesScroll($event)" (scrollToEnd)="onCompaniesScrollToEnd()">
+                                <ng-option *ngFor="let company of companiesList" [value]="company.id">
+                                    {{ company.companyName}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div *ngIf="
+                        userForm.controls.companyId
+                            .invalid &&
+                        (userForm.controls.companyId
+                            .dirty ||
+                            userForm.controls.companyId
+                                .touched)
+                    " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "users.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="w-1/2" *ngIf="companyBranchesList?.length">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "users.add_edit.form.labels.choose_branches"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative user-form-select">
+                            <ng-select class="mt-2" [clearable]="false" [multiple]="true" [compareWith]="compareFn"
+                                placeholder="{{'users.add_edit.form.labels.choose_branches' | transloco }}"
+                                [loading]="companyBranchesLoading" formControlName="companyBranches"
+                                [readonly]="mode == 'view'"
+                                (search)="onBranchesSearch($event)" (clear)="onClearBranches($event)"
+                                (scroll)="onBranchesScroll($event)" (scrollToEnd)="onBranchesScrollToEnd()">
+                                <ng-option *ngFor="let companyBranch of companyBranchesList" [value]="companyBranch.id">
+                                    {{companyBranch.branchName}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div *ngIf="
+                        userForm.controls.companyBranches
+                            .invalid &&
+                        (userForm.controls.companyBranches
+                            .dirty ||
+                            userForm.controls.companyBranches
+                                .touched)
+                    " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "users.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="w-1/2">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "users.add_edit.form.labels.user_permission"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative user-form-select">
+                            <ng-select class="mt-2" [items]="permissionsList" bindLabel="name" [clearable]="false"
+                                [multiple]="false"
+                                [readonly]="mode == 'view'"
+                                formControlName="roles"
+                                placeholder="{{'users.add_edit.form.labels.user_permission' | transloco }}"
+                                [loading]="permissionsLoading" formControlName="roles" bindValue="name">
+                            </ng-select>
+                        </div>
+                        <div *ngIf="
+                        userForm.controls.roles
+                            .invalid &&
+                        (userForm.controls.roles
+                            .dirty ||
+                            userForm.controls.roles
+                                .touched)
+                    " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "users.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8" *ngIf=" mode != 'view'">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                <button type="submit" [disabled]="userForm.invalid"
+                    class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                    <span> 
+                        {{ ( userId ? "users.add_edit.form.labels.update" : "users.add_edit.form.labels.submit" ) | transloco }}
+                    </span>
+                </button>
+
+                <button type="button" (click)="cancelUser()"
+                    class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                    {{ "users.add_edit.form.labels.cancel" | transloco }}
+                </button>
+            </div>
+    </div>
+    </form>
+    </div>
+</section>

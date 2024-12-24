@@ -1,0 +1,19 @@
+::ng-deep {
+    .fuse-vertical-navigation-item-active {
+        .icon {
+            color: #fabd13 !important;
+        }
+    }
+    .fuse-vertical-navigation-item-expanded {
+        .fuse-vertical-navigation-item-children {
+            .fuse-vertical-navigation-item-title-wrapper {
+                .fuse-vertical-navigation-item-title {
+                    span {
+                        font-size: 1rem !important;
+                    }
+                }
+            }
+        }
+    }
+    
+}

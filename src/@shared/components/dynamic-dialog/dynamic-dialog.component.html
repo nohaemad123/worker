@@ -1,0 +1,27 @@
+<div class="text-center dynamic_dialog">
+    <img
+        class="object-contain h-[80%] w-[80%] m-auto"
+        ngSrc="{{ data.image }}"
+        alt="image"
+        width="800"
+        height="600"
+    />
+    <h2 class="font-bold text-2xl">{{ data.title | transloco }}</h2>
+    <p class="font-normal text-xl">{{ data.description | transloco }}</p>
+    <div class="w-full mt-5">
+        <button *ngIf="data.actionText"
+        (click)="action()"
+
+            class="bg-[#4F008D] text-white text-xl w-[45%] h-12 me-6 rounded-lg"
+        >
+            {{ data.actionText | transloco }}
+        </button>
+        
+        <button  *ngIf="data.cancelText"
+            (click)="cancel()"
+            class="text-[#9D90A7] text-xl border-[#9D90A7] border-2 w-[45%] h-12 rounded-lg hover:border-[#4F008D] hover:text-[#4F008D]"
+        >
+            {{ data.cancelText | transloco }}
+        </button>
+    </div>
+</div>

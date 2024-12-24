@@ -1,0 +1,41 @@
+{
+    "view": {
+        "title": "View Existing Shifts on the System",
+        "buttons": {
+            "delete": "Deleted Shifts",
+            "add": "Add Shift"
+        },
+        "filter": {
+            "code": "Search by Shift Code",
+            "name": "Shift Name",
+            "number": "Company's Tax Number"
+        },
+        "table": {
+            "code": "Shift Code",
+            "name": "Shift Name",
+            "time": "Time (Hour)",
+            "fromDate": "From Date",
+            "toDate": "To Date"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "Shifts",
+            "title": "Add New Shift"
+        },
+        "form": {
+            "labels": {
+                "code": "Shift Code",
+                "name": "Shift Name",
+                "fromDate": "From Date",
+                "toDate": "To Date",
+                "submit": "Save and Add New Shift",
+                "cancel": "Cancel",
+                "required": "This field is required"
+            }
+        }
+    },
+    "deleted": {
+        "title": "Deleted Shifts"
+    }
+}

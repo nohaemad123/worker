@@ -1,0 +1,71 @@
+{
+    "view": {
+        "title": "عرض الفروع الموجودة على النظام ",
+        "buttons": {
+            "delete": "الفروع المحذوفة",
+            "add": "اضافة فرع"
+        },
+        "filter": {
+            "code": "كود الفرع",
+            "name": "اسم الفرع",
+            "branchName": "اسم الفرع",
+            "number": "الرقم الضريبي للشركة"
+        },
+        "table": {
+            "companyName": "اسم الشركة",
+            "name": "اسم الفرع",
+            "code": "كود الفرع",
+            "city": "المدينة",
+            "district": "الحى",
+            "address": "العنوان",
+            "must_have_woman": "تستوجب وجود امرآه بالمنزل",
+            "experience": "سنوات الخبرة",
+            "number": "الرقم الضريبي",
+            "commerical": "السجل التجاري",
+            "phone": "رقم الجوال"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "أفرع الشركات",
+            "add_title": "اضافة فرع جديد",
+            "edit_title":"تعديل الفرع"
+        },
+        "form": {
+            "labels": {
+                "Street_Area": "الشارع / المنطقة",
+                "Address": "العنوان",
+                "Email": "البريد الإلكتروني",
+                "Phone": "رقم الهاتف",
+                "Choose_the_company": "إختر الشركة",
+                "Choose_the_branch": "إختر  الفرع",
+                "Choose_the_city": "إختر المدينة",
+                "yes": "نعم",
+                "no": "لا",
+                "search_for_location": "ابحث عن موقع",
+                "number": "الرقم الضريبي للشركة",
+                "commerical": "السجل التجاري للشركة",
+                "mobile": "رقم جوال الشركة",
+                "experience": "سنوات الخبرة",
+                "address": "المقر الرئيسي للشركة",
+                "add_submit": "حفظ و اضافة الفرع",
+                "edit_submit": "تحديث البيانات",
+                "choose_location": "إختر الموقع",
+                "detect_location": "تحديد الموقع",
+                "confirm": "تأكيد",
+                "cancel": "الغاء",
+                "required": "هذا الحقل مطلوب",
+                "email_true":"هذا البريد الالكتروني غير صحيح",
+                "valid_phoneNumber": "من فضلك أدخل رقم هاتف صحيح ( 10 أرقام فقط )"
+            },
+            "placeholders": {
+                "company": "الشركة",
+                "branch": " الفرع",
+                "customer": " العميل"
+            }
+        }
+    },
+    "deleted": {
+        "title": "الخدمات المحذوفة"
+    }
+}

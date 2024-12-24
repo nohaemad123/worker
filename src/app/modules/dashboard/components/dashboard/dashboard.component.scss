@@ -1,0 +1,91 @@
+::ng-deep {
+    #bill-table {
+        // width: 100%;
+        // overflow: visible;
+        .footer-btn {
+            font-family: "Cairo", sans-serif;
+            width: 100%;
+            @apply bg-primary-100 text-black;
+        }
+
+        .p-inputtext,
+        input {
+            font-size: 0.8rem;
+            font-family: "Cairo", sans-serif;
+            @apply text-black font-semibold;
+        }
+        p-dropdown {
+            border: none;
+            width: 100%;
+            display: block;
+            font-family: "Cairo", sans-serif;
+            box-shadow: none !important;
+        }
+        .p-dropdown-item {
+            font-family: "Cairo", sans-serif;
+            // font-size: .8rem;
+            @apply text-black;
+        }
+        .p-dropdown {
+            .p-icon-wrapper {
+                @apply p-1 bg-gray-200 rounded-sm;
+            }
+        }
+        .p-dropdown-filter-container {
+            @apply border bg-white text-black flex items-center gap-2;
+            input {
+                box-shadow: none;
+                @apply text-black p-2 rounded-sm;
+            }
+        }
+        .product-td {
+            .p-dropdown {
+                font-family: "Cairo", sans-serif;
+                width: 100%;
+                font-size: 0.8rem;
+                @apply text-black font-semibold;
+                border: none;
+                box-shadow: none !important;
+            }
+        }
+        .p-inputnumber {
+            input {
+                width: 100%;
+                padding: 0.5em;
+                font-family: "Cairo", sans-serif;
+                font-size: 0.8rem;
+                @apply text-black font-semibold;
+                box-shadow: none !important;
+            }
+        }
+        .cell-center {
+            input {
+                text-align: center;
+            }
+        }
+        .tax {
+            .p-dropdown {
+                width: 100%;
+                box-shadow: none !important;
+            }
+        }
+        .discount {
+            p-dropdown {
+                width: 50% !important;
+            }
+            .p-dropdown {
+                border: none;
+                width: 30% !important;
+                box-shadow: none !important;
+            }
+            .p-inputnumber {
+                width: 100% !important;
+            }
+        }
+        .description {
+            input {
+                width: 100%;
+            }
+        }
+    }
+}

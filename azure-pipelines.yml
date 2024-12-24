@@ -1,0 +1,33 @@
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Npm@1
+  inputs:
+     command: 'install'
+  displayName: 'Npm Install'
+
+- task: Npm@1
+  inputs:
+     command: 'custom'
+     customCommand: 'run ng build'
+  displayName: 'Build Angular App'
+
+# Archive the build output directory
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/fuse'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+# Publish the zipped artifact
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

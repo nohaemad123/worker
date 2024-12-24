@@ -1,0 +1,18 @@
+{
+    "cards": {
+        "companies": "الشركات",
+        "companies_count": "عدد الشركات على النظام",
+        "services": "الخدمات",
+        "services_count": "عدد الخدمات على النظام",
+        "services_pricing": "تسعير الخدمات",
+        "services_pricing_count": "عدد تسعير الخدمات على النظام",
+        "workers": "العمال",
+        "workers_count": "عدد العمال على النظام",
+        "orders": "الطلبات",
+        "orders_count": "عدد الطلبات على النظام",
+        "view_all": "عرض الكل",
+        "active_workers": "العمال النشطة",
+        "inactive_workers": "العمال الغير نشطة",
+        "count": "العدد"
+    }
+}

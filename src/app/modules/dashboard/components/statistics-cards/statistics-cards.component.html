@@ -1,0 +1,27 @@
+<div class="grid w-full grid-cols-1 gap-1 cards"
+    [ngClass]="{
+        'lg:grid-cols-4': cardsData.length === 4,
+        'lg:grid-cols-3': cardsData.length === 3,
+        'lg:grid-cols-2': cardsData.length === 2,
+        'lg:grid-cols-1': cardsData.length === 1
+    }">
+    <ng-container *ngFor="let item of cardsData">
+        <div class="w-full p-4 rounded-md shadow-sm bg-primary card-item" *ngIf="item.count != null" >
+                <div class="flex items-center justify-between top-data">
+                    <div class="flex items-center justify-start gap-1 text-wrapper">
+                        <img class="w-8 h-8" [src]="'assets/icons/' + item.icon" alt="">
+                        <p class="mb-0 text-lg font-semibold text-white">{{ 'home.cards.' + item.title | transloco }}</p>
+                    </div>
+                    <a [routerLink]="item.link" class="flex gap-1 text-white">
+                        {{ 'home.cards.view_all' | transloco }}
+                        <mat-icon class="text-white"
+                        [svgIcon]="'heroicons_outline:arrow-long-left'"></mat-icon>
+                    </a>
+                </div>
+                <div class="flex items-center justify-start gap-2 mt-4 text-white bottom-data">
+                    <span class="text">{{ 'home.cards.' + item.text | transloco }}</span>
+                    <span class="text-lg font-bold count">{{ item.count }}</span>
+                </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,61 @@
+{
+    "view": {
+        "title": "View Existing Branches on the System",
+        "buttons": {
+            "delete": "Deleted Branches",
+            "add": "Add Branch"
+        },
+        "filter": {
+            "code": "Search by Branch Code",
+            "name": "Branch Name",
+            "number": "Company's Tax Number"
+        },
+        "table": {
+            "name": "Branch Name",
+            "code": "Branch Code",
+            "city": "City",
+            "district": "District",
+            "address": "Address",
+            "must_have_woman": "Requires Woman at Home",
+            "experience": "Years of Experience",
+            "number": "Tax Number",
+            "commerical": "Commercial Registration",
+            "phone": "Mobile Number"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "Company Branches",
+            "title": "Add New Branch"
+        },
+        "form": {
+            "labels": {
+                "Street_Area": "Street / Area",
+                "Address": "Address",
+                "Email": "Email",
+                "Phone": "Phone Number",
+                "Choose_the_company": "Choose the Company",
+                "Choose_the_branch": "Choose the Branch",
+                "Choose_the_city": "Choose the City",
+                "yes": "Yes",
+                "no": "No",
+                "number": "Company's Tax Number",
+                "commerical": "Company's Commercial Registration",
+                "mobile": "Company's Mobile Number",
+                "experience": "Years of Experience",
+                "address": "Company's Headquarters",
+                "submit": "Save and Add Branch",
+                "cancel": "Cancel",
+                "required": "This field is required"
+            },
+            "placeholders": {
+                "company": "Company",
+                "branch": "Branch",
+                "customer": "Customer"
+            }
+        }
+    },
+    "deleted": {
+        "title": "Deleted Services"
+    }
+}

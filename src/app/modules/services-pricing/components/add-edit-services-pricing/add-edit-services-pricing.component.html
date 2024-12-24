@@ -1,0 +1,237 @@
+<section class="w-full Add_user_section service_pricing">
+    <div class="w-full p-8 pt-4 pb-0">
+
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Services-Pricing">{{ "servicesPricing.add_edit.breadcrumb.link" | transloco }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span>{{ (
+                        serviceId ? "servicesPricing.add_edit.breadcrumb.edit_title" :
+                        "servicesPricing.add_edit.breadcrumb.add_title" ) | transloco }}</span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditServicePricingSubmit()" [formGroup]="servicePricingForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    {{ (
+                    serviceId ? "servicesPricing.add_edit.breadcrumb.edit_title" :
+                    "servicesPricing.add_edit.breadcrumb.add_title" ) | transloco }}
+                </h3>
+
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2 form-select">
+                    <div class="">
+                        <label for="typeOfServiceId" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "servicesPricing.add_edit.form.labels.choose_service" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <ng-select class="mt-2" [items]="servicesTypesList" bindLabel="name" [clearable]="false"
+                            placeholder="{{'servicesPricing.add_edit.form.labels.choose_service' | transloco }}"
+                            [loading]="servicesTypesLoading" formControlName="typeOfServiceId" bindValue="id"
+                            (search)="onServiceTypesSearch($event)" (clear)="onClearServicesTypes($event)"
+                            (scroll)="onServiceTypesScroll($event)" (scrollToEnd)="onServiceTypesScrollToEnd()">
+                        </ng-select>
+                        <div *ngIf="
+                                servicePricingForm.controls.typeOfServiceId.invalid &&
+                                (servicePricingForm.controls.typeOfServiceId.dirty || servicePricingForm.controls.typeOfServiceId.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "servicesPricing.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-1 service-pricing-table-wrapper">
+                    <table class="overflow-visible">
+                        <thead class="bg-gray-100">
+                            <th class="!w-[20px] border">
+                                <p class="p-2 font-bold text-black text-[.9rem] text-start"></p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 font-bold text-black text-[.9rem] text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.branch" | transloco }}
+                                    <span class="text-[#f00]">*</span>
+                                </p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.shift" | transloco }}
+                                    <span class="text-[#f00]">*</span>
+                                </p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.nationality" | transloco }}
+                                    <span class="text-[#f00]">*</span>
+                                </p>
+                            </th>
+                            <!-- <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.job" | transloco }}
+                                    <span class="text-[#f00]">*</span>
+                                </p>
+                            </th> -->
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.workersCount" | transloco }}
+                                    <!-- <span class="text-[#f00]">*</span> -->
+                                </p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.price" | transloco }}
+                                    <span class="text-[#f00]">*</span>
+                                </p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-center">
+                                    {{ "servicesPricing.add_edit.form.labels.tax" | transloco }}
+                                </p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] text-black font-bold text-center">
+                                    {{ "servicesPricing.add_edit.form.labels.discount" | transloco }}
+                                </p>
+                            </th>
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] font-bold text-black text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.total" | transloco }}
+                                </p>
+                            </th>
+
+                            <th class="border w-1/7">
+                                <p class="p-2 text-[.9rem] font-bold text-black text-start">
+                                    {{ "servicesPricing.add_edit.form.labels.actions" | transloco }}
+                                </p>
+                            </th>
+                        </thead>
+                        <tbody>
+                            <ng-container formArrayName="details">
+                                <tr *ngFor="let detail of details.controls; let i=index">
+                                    <ng-container [formGroupName]="i">
+                                        <td class="p-2">
+                                            <p class="p-2 font-bold text-black text-[.9rem] text-start">
+                                                #{{ i + 1 }}
+                                            </p>
+                                        </td>
+                                        <td class="p-2">
+                                            <ng-select class="mt-2" [items]="branchesList" bindLabel="branchName"
+                                                [clearable]="false"
+                                                placeholder="{{'servicesPricing.add_edit.form.labels.branch' | transloco }}"
+                                                [loading]="branchesLoading" formControlName="companyBranchId" bindValue="id"
+                                                (search)="onBranchesSearch($event)" (clear)="onClearBranches($event)"
+                                                (scroll)="onBranchesScroll($event)"
+                                                (scrollToEnd)="onBranchesScrollToEnd()">
+                                            </ng-select>
+                                        </td>
+                                        <td class="p-2">
+                                            <ng-select class="mt-2" [items]="durationsList" bindLabel="value"
+                                                [clearable]="false"
+                                                placeholder="{{'servicesPricing.add_edit.form.labels.shift' | transloco }}"
+                                                [loading]="durationLoading" formControlName="durationOfServiceId"
+                                                bindValue="key" >
+                                            </ng-select>
+                                        </td>
+                                        <td class="p-2">
+                                            <ng-select class="mt-2" [items]="nationalitiesList" bindLabel="name"
+                                                [clearable]="false"
+                                                placeholder="{{'servicesPricing.add_edit.form.labels.nationality' | transloco }}"
+                                                [loading]="nationalitiesLoading" formControlName="nationalityId"
+                                                bindValue="id" (search)="onNationalitiesSearch($event)"
+                                                (clear)="onClearNationalities($event)"
+                                                (scroll)="onNationalitiesScroll($event)"
+                                                (scrollToEnd)="onNationalitiesScrollToEnd()">
+                                            </ng-select>
+                                        </td>
+                                        <!-- <td class="p-2">
+                                            <ng-select class="mt-2" [items]="jobsList" bindLabel="name"
+                                                [clearable]="false"
+                                                placeholder="{{'servicesPricing.add_edit.form.labels.job' | transloco }}"
+                                                [loading]="jobsLoading" formControlName="jobId"
+                                                bindValue="id" (search)="onJobsSearch($event)"
+                                                (clear)="onClearJobs($event)"
+                                                (scroll)="onJobsScroll($event)"
+                                                (scrollToEnd)="onJobsScrollToEnd()">
+                                            </ng-select>
+                                        </td> -->
+                                        <td class="p-2">
+                                            <input type="number" appPositiveNumber name="workersCount" formControlName="workerCount"
+                                                 appInputNumberMask  [maxDigits]="5"
+                                                class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-3 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                                                placeholder="{{ 'servicesPricing.add_edit.form.labels.workersCount' | transloco }}" />
+                                        </td>
+                                        <td class="p-2">
+                                            <input type="number" appPositiveNumber name="price" formControlName="price"
+                                            appInputNumberMask  [maxDigits]="5"
+                                                class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-3 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                                                placeholder="{{ 'servicesPricing.add_edit.form.labels.price' | transloco }}" />
+                                        </td>
+                                        <td class="p-2">
+                                            <input type="number" appPositiveNumber name="tax" formControlName="tax"
+                                            appInputNumberMask  [maxDigits]="5"
+                                                class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-3 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                                                placeholder="{{ 'servicesPricing.add_edit.form.labels.tax' | transloco }}" />
+                                        </td>
+                                        <td class="p-2">
+                                            <input type="number" appPositiveNumber name="discount"
+                                                formControlName="discount"
+                                                [max]="servicePricingForm.get('details')['controls'][i].get('price').value"
+                                                appInputNumberMask  [maxDigits]="5"
+                                                class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-3 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                                                placeholder="{{ 'servicesPricing.add_edit.form.labels.discount' | transloco }}" />
+                                        </td>
+                                        <td class="p-2">
+                                            <input type="number" appPositiveNumber name="total" formControlName="total"
+                                                appInputNumberMask  [maxDigits]="6"
+                                                readonly [value]="getTotalValue(i)"
+                                                class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-3 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                                                placeholder="{{ 'servicesPricing.add_edit.form.labels.total' | transloco }}" />
+                                        </td>
+                                        <td class="p-2">
+                                            <div class="flex justify-end gap-x-2" *ngIf="i > 0">
+                                                <button type="button"
+                                                    class="w-8 h-8 p-2 mx-2 leading-4 transition-colors duration-200 border border-gray-300 rounded-md cursor-pointer group hover:border-primary hover:bg-primary icon-item"
+                                                    (click)="removeDetail(i)">
+                                                    <mat-icon svgIcon="feather:trash-2"
+                                                        class="w-4 h-4 min-w-4 min-h-4 text-[#F54141] group-hover:text-white"></mat-icon>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex items-start justify-between mt-0 mb-3 table-bottom">
+                    <button type="button" (click)="addDetail()"
+                        class="flex items-center px-4 py-2 my-5 text-white rounded-sm bg-primary w-fit fuse-mat-button-large"
+                        mat-flat-button>
+                        <mat-icon class="!w-5 !h-5 !min-w-5 !min-h-5 text-white"
+                            [svgIcon]="'heroicons_solid:plus-circle'"></mat-icon>
+                        <span class="mx-3"> إضافة </span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button type="submit" [disabled]="servicePricingForm.invalid" 
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span>
+                            {{ ( serviceId ? "servicesPricing.add_edit.form.labels.edit_submit"
+                            : "servicesPricing.add_edit.form.labels.add_submit"
+                            ) | transloco }}
+                        </span>
+                    </button>
+
+                    <button type="button" (click)="cancelServicePricing()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{ "servicesPricing.add_edit.form.labels.cancel" | transloco }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

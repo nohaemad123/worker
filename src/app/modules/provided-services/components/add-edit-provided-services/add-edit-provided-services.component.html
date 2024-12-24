@@ -1,0 +1,160 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Provided-Services">{{ "providedServices.add_edit.breadcrumb.link" | transloco }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span>{{ "providedServices.add_edit.breadcrumb.title" | transloco }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form (ngSubmit)="addEditServiceSubmit()" [formGroup]="ServicesForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    {{ "providedServices.add_edit.breadcrumb.title" | transloco }}
+                </h3>
+
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+
+                    <!-- min -->
+                    <div class="">
+                        <label for="min" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.min" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="min" formControlName="min"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'providedServices.add_edit.form.labels.min' | transloco }}" />
+                        <div *ngIf="
+                                ServicesForm.controls.min.invalid &&
+                                (ServicesForm.controls.min.dirty || ServicesForm.controls.min.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "providedServices.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- max -->
+                    <div class="">
+                        <label for="max" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.max" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="max" formControlName="max"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'providedServices.add_edit.form.labels.max' | transloco }}" />
+                        <div *ngIf="
+                                ServicesForm.controls.max.invalid &&
+                                (ServicesForm.controls.max.dirty ||ServicesForm.controls.max.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "providedServices.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- worker number -->
+                    <div class="">
+                        <label for="workersNumber" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.workers_number" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="workersNumber" formControlName="workersNumber"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'providedServices.add_edit.form.labels.workers_number' | transloco }}" />
+                        <div *ngIf="
+                                ServicesForm.controls.workersNumber.invalid &&
+                                (ServicesForm.controls.workersNumber.dirty || ServicesForm.controls.workersNumber.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "providedServices.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- service price -->
+                    <div class="">
+                        <label for="servicePrice" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.service_price" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="servicePrice" formControlName="servicePrice"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'providedServices.add_edit.form.labels.service_price' | transloco }}" />
+                        <div *ngIf="
+                                ServicesForm.controls.servicePrice.invalid &&
+                                (ServicesForm.controls.servicePrice.dirty ||ServicesForm.controls.servicePrice.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "providedServices.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- service -->
+                    <div class="">
+                        <label for="service" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.service" | transloco }}
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-star custom-icon"></i>
+                            <p-dropdown [options]="list" formControlName="service" optionLabel="name" optionValue="id"
+                                placeholder="{{ 'providedServices.add_edit.form.labels.service' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!-- shift -->
+                    <div class="">
+                        <label for="shift" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.shift" | transloco }}
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-sun custom-icon"></i>
+                            <p-dropdown [options]="list" formControlName="shift" optionLabel="name" optionValue="id"
+                                placeholder="{{ 'providedServices.add_edit.form.labels.shift' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+
+                    <!-- nationality -->
+                    <div class="">
+                        <label for="nationality" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "providedServices.add_edit.form.labels.nationality" | transloco }}
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-globe custom-icon"></i>
+                            <p-dropdown [options]="list" formControlName="nationality" optionLabel="name"
+                                optionValue="id"
+                                placeholder="{{ 'providedServices.add_edit.form.labels.nationality' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button type="submit" [disabled]="ServicesForm.invalid"
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span>
+                            {{ "providedServices.add_edit.form.labels.submit" | transloco }}
+                        </span>
+                    </button>
+
+                    <button type="button" (click)="cancelService()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{ "providedServices.add_edit.form.labels.cancel" | transloco }}
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</section>

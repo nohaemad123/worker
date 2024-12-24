@@ -1,0 +1,23 @@
+<p class="p-2 text-xl font-bold text-primary">{{"home.cards.services_pricing" | transloco}}</p>
+<div id="services-chart">
+  <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions"
+      [yaxis]="chartOptions.yaxis"
+      [xaxis]="chartOptions.xaxis"
+      [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors"
+      [grid]="chartOptions.grid"
+    ></apx-chart>
+    <!-- <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [labels]="chartOptions.labels"
+      [responsive]="chartOptions.responsive"
+      [colors]="chartOptions.colors"
+      [plotOptions]="chartOptions.plotOptions"
+    ></apx-chart> -->
+  </div>
+  

@@ -1,0 +1,324 @@
+<div class="card">
+    <p-table #dt [value]="tableConfig.data" [rows]="tableConfig.rows" [columns]="selectedColumns()"
+        [ngClass]="tableConfig?.loading ? '!min-h-[40vh]' : ''"
+        [tableStyle]="tableConfig.tableStyle" [totalRecords]="tableConfig?.total" [(selection)]="selectedItems"
+        [globalFilterFields]="tableConfig.globalFilterFields" [loading]="tableConfig.loading" [lazy]="tableConfig.lazy"
+        styleClass="p-datatable-striped">
+        <!-- [paginator]="tableConfig.paginator"
+        [rowsPerPageOptions]="tableConfig.rowsPerPageOptions"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        (onPage)="pageChange($event)" -->
+        @if (tableConfig.controlColumns) {
+        <ng-template pTemplate="caption">
+            <p-multiSelect display="chip" [options]="columns" [(ngModel)]="selectedColumns" optionLabel="header"
+                selectedItemsLabel="{0} columns selected" [style]="{ 'min-width': '200px' }"
+                placeholder="Choose Columns" />
+        </ng-template>
+        } @if (tableConfig.withSearch) {
+        <ng-template pTemplate="caption">
+            <p-iconField iconPosition="left">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Global Search" />
+            </p-iconField>
+        </ng-template>
+        }
+
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th class="p-2" style="width: 4rem" *ngIf="tableConfig.withCheckBoxes">
+                    <p-tableHeaderCheckbox />
+                </th>
+                @for (col of columns; track col.field) {
+                <th (click)="SortData(col)" class="p-4 font-semibold bg-[#4F008D14] text-md"
+                     [ngClass]="[col.style, col.sortable ? 'cursor-pointer' : 'cursor-default']"
+                    [pSortableColumn]="col.sortable ? col.field : null">
+                    @if (col.header !== 'Actions') {
+                    <ng-container>
+                        {{ col.header | transloco }}
+                        <p-sortIcon class="inline-flex w-2 h-2 mx-1 !align-super min-w-2 min-h-2" *ngIf="col.sortable"
+                            [field]="col.field" />
+                    </ng-container>
+                    }@else {
+                    <ng-container>
+                        <img class="w-8 h-8 m-auto cursor-default" src="assets/icons/actions-icon.svg" alt="" />
+                    </ng-container>
+                    }
+                </th>
+                }
+            </tr>
+            @if (tableConfig.withFilter) {
+            <tr>
+                @if (tableConfig.withCheckBoxes) {
+                <th class="p-2" *ngIf="">
+                    <!-- <p-tableCheckbox [value]="item" /> -->
+                </th>
+                } @for (filter of tableFilter; track filter.field) {
+                <th class="p-2">
+                    <p-columnFilter [type]="filter.type" [field]="filter.field" [placeholder]="filter.placeholder"
+                        ariaLabel="Filter Name" />
+                </th>
+                }
+            </tr>
+            }
+        </ng-template>
+
+        <ng-template pTemplate="body" let-item let-columns="columns" let-rowIndex="rowIndex">
+            <tr class="border-b-2 border-gray-100">
+                @if (tableConfig.withCheckBoxes) {
+                <td class="p-2">
+                    <p-tableCheckbox [value]="item" />
+                </td>
+                } @for (col of columns; track col.field) {
+
+                <td class="p-2">
+                    @if (col.header == '#') {
+                    <div class="text-start">
+                        {{ rowIndex + 1 }}
+                    </div>
+                    } @if (col.header !== 'Actions' && col.header !== '#') {
+                    <ng-container>
+                        @if (col.type == 'link') {
+                        <a [ngClass]="col.rowStyle" class="w-[120px] m-auto block" (click)="actionClicked('VIEW','ACTION',item)">
+                            {{ item[col.field] ? item[col.field] : '-' }}
+                        </a>
+                        }
+                        @if (col.type == 'text') {
+                        <div [ngClass]="col.rowStyle" class="w-[120px] m-auto">
+                            {{ item[col.field] ? item[col.field] : '-' }}
+                        </div>
+                        }
+                        @if (col.type == 'text-with-img') {
+                        <div class="flex items-center justify-start">
+                            <img [alt]="item[col.field].name" [src]="item[col.field]?.img"
+                                style="width: 32px; height: 32px" class="rounded-md" />
+                            <span class="mx-3 ml-1 vertical-align-middle">
+                                {{ item[col.field].name }}
+                            </span>
+                        </div>
+                        }
+                        @if (col.type == 'image') {
+                        <div class="flex items-center justify-center">
+                            <img [src]="imgPath + item[col.field]" style="width: 200px; height: 100px"
+                                class="rounded-md" />
+                        </div>
+                        }
+                        @if (col.type == 'status') { @if(representatives ||
+                        productGroup){
+                        <div>
+                            <div class="p-2 rounded w-[110px] status-wrapper m-auto flex items-center justify-start"
+                                [ngClass]="{
+                                    'bg-green-100 text-green-700': !item[col.field],
+                                    'bg-gray-100 text-gray-700': item[col.field],
+                                }">
+                                <div class="inline-flex img-wrapper">
+                                    <img class="w-5 h-5" *ngIf="!item[col.field]" src="assets/icons/active-icon.svg"
+                                        alt="" />
+                                    <img class="w-5 h-5" *ngIf="item[col.field]" src="assets/icons/inactive-icon.svg"
+                                        alt="" />
+                                </div>
+                                <span class="inline-flex mx-3 text-md status-text">
+                                    <span *ngIf="lang === 'ar'">
+                                        {{
+                                        item[col.field]
+                                        ? "غير نشط "
+                                        : " نشط"
+                                        }}
+                                    </span>
+                                    <span *ngIf="lang === 'en'">
+                                        {{
+                                        item[col.field]
+                                        ? "Inactive"
+                                        : "Active "
+                                        }}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        }@else{
+                        <div>
+                            <div class="p-2 rounded w-[110px] status-wrapper m-auto flex items-center justify-start"
+                                [ngClass]="{
+                                    'bg-green-100 text-green-700': item[col.field],
+                                    'bg-gray-100 text-gray-700': !item[col.field],
+                                }">
+                                <div class="inline-flex img-wrapper">
+                                    <img class="w-5 h-5" *ngIf="item[col.field]" src="assets/icons/active-icon.svg"
+                                        alt="" />
+                                    <img class="w-5 h-5" *ngIf="!item[col.field]" src="assets/icons/inactive-icon.svg"
+                                        alt="" />
+                                </div>
+                                <span class="inline-flex mx-3 text-md status-text">
+                                    <span *ngIf="lang === 'ar'">
+                                        {{
+                                        item[col.field] ? "نشط" : "غير نشط"
+                                        }}
+                                    </span>
+                                    <span *ngIf="lang === 'en'">
+                                        {{
+                                        item[col.field]
+                                        ? "Active"
+                                        : "Inactive"
+                                        }}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        } } @if (col.type == 'date') {
+                        <div [ngClass]="col.rowStyle">
+                            {{
+                            item[col.field]
+                            | date : "EE, d MMM y"
+                            }}
+                        </div>
+                        } 
+                        @if (col.type == 'number') {
+                        <div [ngClass]="col.rowStyle" class="w-[110px] m-auto">
+                            {{ item[col.field] ? item[col.field] : '-' }}
+                        </div>
+                        }
+                        @if (col.type == 'percentage') {
+                        <div [ngClass]="col.rowStyle" class="w-[110px] m-auto">
+                            <span *ngIf="item[col.field]">{{ item[col.field] }} %</span>
+                            <span *ngIf="!item[col.field]">-</span>
+                        </div>
+                        }
+                        @if (col.type == 'price') {
+                        <div [ngClass]="col.rowStyle" class="w-[110px] m-auto">
+                            <span *ngIf="item[col.field]">{{ item[col.field] }}  ريال</span>
+                            <span *ngIf="!item[col.field]">-</span>
+                        </div>
+                        }
+                         @if (col.type == 'boolean') {
+                        <div [ngClass]="col.rowStyle">
+                            {{ item[col.field] ? "نعم" : "لا" }}
+                        </div>
+                        } @if (col.type == 'text-array') {
+                        <div [ngClass]="col.rowStyle">
+                            <span
+                                class="inline-block w-[120px] p-2 px-6 text-center text-black bg-gray-100 rounded-full text-md pill">{{
+                                item[col.field] }}</span>
+                        </div>
+                        }
+                    </ng-container>
+                    } @if (col.header == 'Actions') {
+                    <ng-container>
+                        <div class="flex justify-center w-full icons-wrapper">
+                            <ng-container *ngFor="
+                                    let action of tableConfig.actions;
+                                    let i = index
+                                ">
+                                <span (click)="
+                                        actionClicked(
+                                            action.key,
+                                            action.type,
+                                            item
+                                        )
+                                    " [ngClass]="{
+                                        ' bg-[#F54141] text-white':
+                                            action.key === 'LOCK' &&
+                                            !item.isActive,
+                                        ' bg-white':
+                                            action.key === 'LOCK' &&
+                                            item.isActive
+                                    }"
+                                    class="w-8 h-8 p-2 mx-2 leading-4 transition-colors duration-200 border border-gray-300 rounded-md cursor-pointer group icon-item">
+                                    <!-- *ngIf="i < 2" -->
+
+                                    <mat-icon [ngClass]="{
+                                            '  text-white':
+                                                action.key === 'LOCK' &&
+                                                !item.isActive,
+                                            ' ':
+                                                action.key === 'LOCK' &&
+                                                item.isActive
+                                        }" class="w-4 h-4 min-w-4 min-h-4" [class.text-primary]="
+                                            action.key === 'LOCK'
+                                        " [class.text-[#2FD36F]]="
+                                            action.key === 'EDIT'
+                                        " [class.text-[#F54141]]="
+                                            action.key === 'DELETE'
+                                        " [svgIcon]="
+                                            action.key === 'LOCK' &&
+                                            item.isActive
+                                                ? 'feather:unlock'
+                                                : action.icon
+                                        "></mat-icon>
+                                </span>
+                            </ng-container>
+                            <!-- <div
+                                class="relative menu-wrapper"
+                                *ngIf="tableConfig.actions.length > 2"
+                            >
+                                <span
+                                    (click)="menu.toggle($event)"
+                                    class="w-8 h-8 p-1 mx-2 leading-5 align-text-top transition-colors duration-200 rounded-md cursor-pointer group icon-item"
+                                >
+                                    <mat-icon
+                                        class="w-6 h-6 mt-1 min-w-4 min-h-4 group-hover:text-primary"
+                                        svgIcon="feather:more-vertical"
+                                    ></mat-icon>
+                                </span>
+
+
+                                <p-menu
+                                    #menu
+                                    [model]="tableConfig.actions.slice(2)"
+                                    [popup]="true"
+                                >
+                                    <ng-template pTemplate="item" let-action>
+                                        <span
+                                            class="block h-8 px-4 py-2 cursor-pointer group"
+                                            (click)="
+                                                actionClicked(
+                                                    action.key,
+                                                    action.type,
+                                                    item
+                                                )
+                                            "
+                                        >
+                                            <mat-icon
+                                                class="w-4 h-4 text-gray-500 min-w-4 min-h-4 group-hover:text-primary"
+                                                [svgIcon]="action.icon"
+                                            ></mat-icon>
+                                        </span>
+                                    </ng-template>
+                                </p-menu>
+                            </div> -->
+                        </div>
+                    </ng-container>
+                    }
+                </td>
+                }
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr class="w-full p-2 text-center">
+                <td [attr.colspan]="tableConfig?.columns.length" class="w-full text-center">
+                    <!-- {{ tableConfig.emptyMsg | transloco}} -->
+                    لا توجد بيانات
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<div class="flex items-center justify-between px-4 footer" *ngIf="tableConfig.data?.length">
+    <p class="select-wrapper">
+        <span class="text-black text">يتم عرض</span>
+        <p-dropdown class="mx-2" [options]="tableConfig.rowsPerPageOptions" [(ngModel)]="rowsItems"
+            (onChange)="onPageSizeChange($event)" />
+        <!-- optionLabel=""  -->
+        <!-- [(ngModel)]=""  -->
+        <span class="text-black text">فى الصفحة</span>
+    </p>
+    <p-paginator [rows]="tableConfig?.rows" [totalRecords]="tableConfig?.total"
+        (onPageChange)="pageChange($event)"></p-paginator>
+    <div class="total-wrapper">
+        <span class="text-black text">إجمالى</span>
+        <span class="mx-2 number">{{ tableConfig?.totalPages }}</span>
+        <span class="text-black text">صفحة</span>
+    </div>
+</div>

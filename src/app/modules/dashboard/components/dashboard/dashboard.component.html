@@ -1,0 +1,24 @@
+<section class="w-full p-10" *ngIf="dashboardData && !loading">
+    <div class="w-full mb-5 cards-wrapper">
+        <app-statistics-cards [statisticsData]="dashboardData"></app-statistics-cards>
+    </div>
+    <div class="grid items-start justify-between w-full grid-cols-1 gap-4 mt-10 lg:grid-cols-2">
+        <div class="p-2 bg-white rounded-md shadow-sm chart" *ngIf="dashboardData?.companiesPerMonth?.length">
+            <app-companies-chart [chartData]="dashboardData?.companiesPerMonth"></app-companies-chart>
+        </div>
+        <div class="p-2 bg-white rounded-md shadow-sm chart" *ngIf="dashboardData?.ordersByStatus">
+            <app-orders-chart [chartData]="dashboardData?.ordersByStatus"></app-orders-chart>
+        </div>
+        <div class="p-2 bg-white rounded-md shadow-sm chart" *ngIf="dashboardData?.servicePricePerMonth">
+            <app-services-chart [chartData]="dashboardData?.servicePricePerMonth"></app-services-chart>
+        </div>
+        <div class="chart">
+            <div class="p-2 bg-white rounded-md shadow-sm chart-wrapper" *ngIf="dashboardData?.workersPerMonth">
+                <app-workers-chart [chartData]="dashboardData?.workersPerMonth"></app-workers-chart>
+            </div>
+            <ng-container *ngIf="dashboardData?.workersPerActivity">
+                <app-workers-statistics [statisticsData]="dashboardData?.workersPerActivity"></app-workers-statistics>
+            </ng-container>
+        </div>
+    </div>
+</section>

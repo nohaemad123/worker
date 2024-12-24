@@ -1,0 +1,139 @@
+<div class="flex flex-col items-center justify-center w-full h-full">
+    <div class="w-full max-w-3xl">
+        <div class="max-w-none mx-auto prose prose-sm">
+            <img
+                class="w-auto text-center"
+                src="assets/images/logo/logo.svg"
+                alt="Logo image">
+            <h1 class="text-center">Landing Page</h1>
+            <!-- alert -->
+
+            <fuse-alert
+                class="mt-8"
+                *ngIf="showAlert"
+                [appearance]="'outline'"
+                [showIcon]="true"
+                [type]="alert.type"
+                [@shake]="alert.type === 'error'">
+                {{alert.message}}
+            </fuse-alert>
+              <!-- Sign Up form -->
+              <form
+              class="mt-8"
+              [formGroup]="signUpForm">
+
+              <!-- Name field -->
+              <mat-form-field class="w-full">
+                  <mat-label>{{"auth.form.fields.name" | transloco}}</mat-label>
+                  <input
+                      id="name"
+                      matInput
+                      formControlName="name"
+                      placeholder="{{'auth.form.fields.name_placeholder' | transloco}}"
+                      >
+                  <mat-error>
+                     {{'auth.form.messages.name_required' | transloco}}
+                  </mat-error>
+              </mat-form-field>
+
+              <!-- User name -->
+              <mat-form-field class="w-full">
+                  <mat-label>{{"auth.form.fields.username" | transloco}}</mat-label>
+                  <input
+                      id="username"
+                      matInput
+                      formControlName="username"
+                      placeholder="{{'auth.form.fields.username_placeholder' | transloco}}"
+                      >
+                  <mat-error>
+                     {{'auth.form.messages.username_required' | transloco}}
+                  </mat-error>
+              </mat-form-field>
+
+              <!-- User name -->
+              <mat-form-field class="w-full">
+                  <mat-label>{{"auth.form.fields.phone" | transloco}}</mat-label>
+                  <input
+                      id="phone"
+                      matInput
+                      formControlName="phone"
+                      placeholder="{{'auth.form.fields.phone_placeholder' | transloco}}"
+                      >
+                  <mat-error>
+                     {{'auth.form.messages.phone_required' | transloco}}
+                  </mat-error>
+              </mat-form-field>
+
+              <!-- Email field -->
+              <mat-form-field class="w-full">
+                  <mat-label>{{"auth.form.fields.email" | transloco}}</mat-label>
+                  <input
+                      id="email"
+                      matInput
+                      [formControlName]="'email'"
+                      placeholder="{{'auth.form.fields.email_placeholder' | transloco}}"
+                      >
+                  <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+                    {{'auth.form.messages.email_required' | transloco}}
+                </mat-error>
+                  <mat-error *ngIf="signUpForm.get('email').hasError('email')">
+                    {{'auth.form.messages.email_invalid' | transloco}}
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Password field -->
+              <mat-form-field class="w-full">
+                  <mat-label>{{"auth.form.fields.password" | transloco}}</mat-label>
+                  <input
+                      id="password"
+                      matInput
+                      type="password"
+                      [formControlName]="'password'"
+                      placeholder="{{'auth.form.fields.password_placeholder' | transloco}}"
+                      >
+
+                  <mat-error>
+                     {{'auth.form.messages.password_required' | transloco}}
+                  </mat-error>
+              </mat-form-field>
+
+
+              <!-- Password Confirmation -->
+              <mat-form-field class="w-full">
+                  <mat-label>{{"auth.form.fields.confirm_password" | transloco}}</mat-label>
+                  <input
+                      id="confirmPassword"
+                      matInput
+                      type="password"
+                      formControlName="confirmPassword"
+                      placeholder="{{'auth.form.fields.confirm_password_placeholder' | transloco}}"
+                      >
+
+                  <mat-error>
+                     {{'auth.form.messages.confirm_password_required' | transloco}}
+                  </mat-error>
+              </mat-form-field>
+
+
+
+              <!-- Submit button -->
+              <button
+                  class="fuse-mat-button-large w-full mt-6"
+                  mat-flat-button
+                  [color]="'primary'"
+                  [disabled]="!signUpForm.valid"
+                  (click)="signUp()">
+                  <span *ngIf="!signUpForm.disabled">
+                    {{"auth.form.fields.submit" | transloco}}
+                  </span>
+                  <mat-progress-spinner
+                      *ngIf="signUpForm.disabled"
+                      [diameter]="24"
+                      [mode]="'indeterminate'"></mat-progress-spinner>
+              </button>
+
+          </form>
+        </div>
+
+    </div>
+</div>

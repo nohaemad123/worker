@@ -1,0 +1,38 @@
+{
+    "view": {
+        "title": "View Existing Branches on the System",
+        "buttons": {
+            "delete": "Deleted Branches",
+            "add": "Add Branch"
+        },
+        "filter": {
+            "code": "Search by Branch Code",
+            "name": "Branch Name",
+            "number": "Branch's Tax Number"
+        },
+        "table": {
+            "nameAr": "Branch Name (Arabic)",
+            "nameEn": "Branch Name (English)",
+            "code": "Branch Code"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "Branches",
+            "title": "Add New Branch"
+        },
+        "form": {
+            "labels": {
+                "code": "Branch Code",
+                "nameAr": "Branch Name (Arabic)",
+                "nameEn": "Branch Name (English)",
+                "submit": "Save and Add New Branch",
+                "cancel": "Cancel",
+                "required": "This field is required"
+            }
+        }
+    },
+    "deleted": {
+        "title": "Deleted Branches"
+    }
+}

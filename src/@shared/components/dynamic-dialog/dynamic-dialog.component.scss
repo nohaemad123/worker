@@ -1,0 +1,31 @@
+@-webkit-keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-75px);
+        transform: translateY(-75px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-75px);
+        transform: translateY(-75px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+.dynamic_dialog {
+    -webkit-animation: slide-bottom 5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        both;
+    animation: slide-bottom 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    // padding-top: 5rem;
+}
+

@@ -1,0 +1,30 @@
+::ng-deep {
+    .form-select {
+        .ng-select .ng-select-container {
+            height: 48px !important;
+            min-height: 48px !important;
+            border-radius: 0.5rem !important;
+            border-width: 2px !important;
+            // border-color: rgba(226, 232, 240, 1) !important;
+            border-color: transparent !important;
+            background-color: #e4dde985;
+        }
+        .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+            top: 10px !important;
+        }
+        .ng-arrow-wrapper {
+            height: 48px;
+            width: 42.6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ededed;
+            .ng-arrow {
+                border-width: 7px 7px 2.5px !important ;
+            }
+        }
+        .ng-select.ng-select-opened > .ng-select-container .ng-arrow {
+            border-width: 0 7px 7px !important            ;
+        }
+    }
+}

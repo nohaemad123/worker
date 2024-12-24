@@ -1,0 +1,13 @@
+<div
+    class="flex justify-between mb-5 bg-white rounded-xl bg-gradient-to-r from-black-400 to-white-500"
+>
+    <div class="p-4 mt-2">
+        <h3 class="mb-2 text-xl font-semibold text-natural-black">
+            {{ header?.title | transloco }}
+        </h3>
+        <p class="text-lg text-neutral-grey">{{ header?.desc | transloco }}</p>
+    </div>
+    <div class="background_image">
+        <img [src]="header?.image" width="100" height="100" />
+    </div>
+</div>

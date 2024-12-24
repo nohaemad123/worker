@@ -1,0 +1,19 @@
+<div class="congratulations_contaoner">
+    <div class="text-center">
+        <img class="object-contain " src="assets/images/ui/Privacy policy.gif" alt="congratulations-imge"  />
+        <p class="font-bold text-2xl">   {{ "auth.form.fields.congratulatuins_message" | transloco }}</p>
+        <p class="font-normal text-xl">{{ "auth.form.fields.congratulatuins_desc" | transloco }}</p>
+        <button
+            class="w-full mt-6 rounded-md fuse-mat-button-large submit_button"
+            mat-flat-button
+            [color]="'primary'"
+            type="button"
+            (click)="navigateToHome()"
+        >
+            <span >
+                {{ "auth.form.fields.sign_in" | transloco }}
+            </span>
+            <i class="mr-2 pi pi-arrow-left" style="color: #fff"></i>
+        </button>
+    </div>
+</div>

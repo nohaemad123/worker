@@ -1,0 +1,43 @@
+::ng-deep {
+.p-dropdown {
+    width: 100% !important;
+    // border: 1px solid #e2e8f0 !important;
+    padding: 0 !important;
+    margin-top: 0.5rem !important;
+
+    .p-inputtext {
+        width: 100%;
+        font-size: 1rem;
+        color: #4b556384;
+        background: #F8F6F9;
+        padding: 0.75rem 0.75rem;
+        //  border: 1px solid #d1d5db;
+        transition:
+            background-color 0.2s,
+            color 0.2s,
+            border-color 0.2s,
+            box-shadow 0.2s;
+        appearance: none;
+        border-radius: 0px !important;
+        border-top-right-radius: 6px !important;
+        border-bottom-right-radius: 6px !important;
+        font-family: "Cairo", sans-serif;
+    }
+
+    .p-dropdown-trigger {
+        background-color: #ededed;
+        border-radius: 0;
+        border: 0px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    /* Change to your desired font family */
+    .p-dropdown-item {
+        font-family: "Cairo", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.48px;
+    }
+}
+}

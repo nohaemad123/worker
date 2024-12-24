@@ -1,0 +1,121 @@
+::ng-deep {
+    .p-dropdown {
+        width: 100% !important;
+        // border: 1px solid #e2e8f0 !important;
+        height: 3rem;
+        padding: 0 !important;
+        margin-top: 0.5rem !important;
+        border: 1px solid #E4DDE9;
+        background: #F8F6F9;
+
+        .p-inputtext {
+            width: 100%;
+            font-size: 1rem;
+            color: #4b556384;
+            background: #F8F6F9 !important;
+            padding: 0.75rem 0.75rem;
+            //  border: 1px solid #d1d5db;
+            transition:
+                background-color 0.2s,
+                color 0.2s,
+                border-color 0.2s,
+                box-shadow 0.2s;
+            appearance: none;
+            border-radius: 0px !important;
+            border-top-right-radius: 6px !important;
+            border-bottom-right-radius: 6px !important;
+            font-family: "Cairo", sans-serif;
+        }
+
+        .p-dropdown-trigger {
+            background-color: #E4DDE9;
+            border-radius: 0;
+            border: 0px;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        /* Change to your desired font family */
+        .p-dropdown-item {
+            font-family: "Cairo", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18.48px;
+        }
+
+        .p-dropdown-label {
+            padding-right: 40px !important;
+        }
+    }
+
+    .p-password {
+        width: 100%;
+
+        .p-inputtext {
+            width: 100%;
+            font-size: 1rem;
+            color: #4b5563;
+            background: #F8F6F9;
+            padding: 0.75rem 0.75rem;
+            border: 1px solid #E4DDE9;
+            font-family: "Cairo", sans-serif;
+            transition:
+                background-color 0.2s,
+                color 0.2s,
+                border-color 0.2s,
+                box-shadow 0.2s;
+            appearance: none;
+            border-radius: 7px;
+            height: 3rem;
+        }
+    }
+
+    .p-input-icon-right>.p-icon-wrapper,
+    .p-input-icon-right>i:last-of-type {
+        left: 1.5rem;
+        right: auto;
+        color: #6b7280;
+    }
+
+    .p-inputtext {
+        width: 100%;
+        font-family: "Cairo", sans-serif;
+        font-size: 1rem;
+        color: #4b5563;
+        background: #ffffff;
+        padding: 0.75rem 0.75rem;
+        border: 1px solid #d1d5db;
+        transition:
+            background-color 0.2s,
+            color 0.2s,
+            border-color 0.2s,
+            box-shadow 0.2s;
+        appearance: none;
+        border-radius: 6px;
+        height: 3rem;
+    }
+
+    .p-inputtext:enabled:focus {
+        width: 100%;
+    }
+
+    .p-datatable-table th,
+    .p-datatable-table td {
+        text-align: start;
+    }
+
+    .p-datatable-thead tr {
+        border-bottom: 1px solid #ccc;
+    }
+
+    p-checkbox {
+        border: 1px solid #ccc;
+    }
+}
+
+.custom-icon {
+    position: absolute;
+    z-index: 1;
+    top: 21px;
+    font-size: 20px;
+}

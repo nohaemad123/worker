@@ -1,0 +1,42 @@
+{
+    "view": {
+        "title": "عرض الطلبات الموجودة على النظام",
+        "filter": {
+            "service_type": "نوع الخدمة",
+            "service_type_ph": "اختر نوع الخدمة",
+            "branch": "الفرع",
+            "branch_ph": "اختر الفرع",
+            "code": "بحث بالكود",
+            "userName": "اسم المستخدم"
+        },
+        "table": {
+            "client_name": "اسم العميل",
+            "order_date": "تاريخ الطلب",
+            "edit_date": "تاريخ التعديل",
+            "nationality": "الجنسية",
+            "order_status": "حالة الطلب",
+            "payment_status": "حالة الدفع",
+            "total": "إجمالى القيمة",
+            "actions": "الإجراءات",
+            "operations": "العمليات",
+            "service_details": "تفاصيل الخدمة",
+            "company_name": "اسم الشركة",
+            "companyBranchName": "اسم الفرع",
+            "first_visit_date": "تاريخ أول زيارة",
+            "chosen_days": "الأيام المختارة",
+            "shift": "الفترة",
+            "contract_duration": "مدة العقد",
+            "workers_count": "عدد العمال",
+            "times_in_week": "كم مرة بالأسبوع",
+            "daily_hours": "عدد الساعات اليومية",
+            "bill_details": "تفاصيل الفاتورة",
+            "client": "العميل",
+            "cost": "التكلفة",
+            "discount": "الخصم",
+            "tax": "الضريبة",
+            "total_bill": "الإجمالى",
+            "phone_number": "رقم الجوال",
+            "address": "العنوان"
+        }
+    }
+}

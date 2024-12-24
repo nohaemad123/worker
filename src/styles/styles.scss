@@ -1,0 +1,116 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+@tailwind utilities;
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "primeicons/primeicons.css";
+
+@import "~intl-tel-input/build/css/intlTelInput.css";
+
+.mat-mdc-form-field.mat-form-field-appearance-fill .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-form-field-infix .mat-mdc-floating-label {
+    top: -35px !important;
+}
+
+
+@font-face {
+    font-family: "Cairo";
+    src:
+        url("/assets/fonts/cairo/Cairo-Regular.woff2") format("woff2"),
+        url("/assets/fonts/cairo/Cairo-Regular.wofff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: "Cairo", sans-serif;
+
+}
+
+table {
+    font-family: "Cairo", sans-serif;
+}
+
+.p-dialog,
+.p-dynamic-dialog,
+.p-dropdown-label,
+.p-dropdown-item {
+    font-family: "Cairo", sans-serif;
+}
+
+.mat-mdc-form-field-error {
+    color: #F54141 !important;
+}
+
+.mat-mdc-form-field.mat-form-field-appearance-fill.mat-form-field-invalid .mat-mdc-text-field-wrapper {
+    border-color: #F54141 !important;
+}
+
+.ng-otp-input-wrapper[_ngcontent-ng-c3470639301] .otp-input[_ngcontent-ng-c3470639301] {
+    margin-right: 0 !important;
+    margin-inline-start: .3em !important;
+}
+
+.add_new_button:hover {
+    box-shadow: 0px 16px 30px -15px #4F008D;
+    transition-duration: 1s;
+}
+
+.deleted_button:hover {
+    box-shadow: 0px 16px 30px -15px #4F008D;
+    transition-duration: 1s;
+}
+
+.deleted_button:hover span {
+    margin-left: 10px;
+    transition-duration: 1s;
+}
+
+.deleted_button:hover i {
+    margin-right: 15px !important;
+    transition-duration: 1s;
+
+
+}
+
+.p-dropdown-trigger {
+    background-color: #E4DDE9;
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    width: 40px;
+}
+
+.p-dropdown-label {
+    font-size: 14px;
+}
+
+
+.p-radiobutton-box {
+    border-color: #3C006B;
+
+    &.p-highlight {
+        border-color: #3C006B;
+        background-color: #3C006B;
+    }
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input {
+    color: #030311 !important;
+}

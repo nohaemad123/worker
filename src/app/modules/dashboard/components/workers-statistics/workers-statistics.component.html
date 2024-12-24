@@ -1,0 +1,38 @@
+<div class="grid items-start justify-between w-full grid-cols-1 gap-4 mt-3 lg:grid-cols-2">
+    <div class="flex items-center justify-between p-2 bg-white rounded-md shadow-sm workers-item">
+        <div class="flex flex-col gap-3 text">
+            <p class="mb-0">
+                <span class="inline-block w-2 h-2 bg-green-600 rounded-full badge"></span>
+                <span class="mx-2 text-lg title text-primary">{{ 'home.cards.active_workers' | transloco }}</span>
+            </p>
+            <p class="mb-0 number">
+                <span class="text-black head">{{ 'home.cards.count' | transloco }} : </span>
+                <span class="mx-2 text-lg data text-primary">{{ activeWorkersCount ? activeWorkersCount : 0 }}</span>
+            </p>
+        </div>
+        <div class="flex items-center justify-start gap-0 p-x-2 imgs">
+            <!-- <img src="assets/images/avatars/male-01.jpg" alt="" class="w-6 h-6 rounded-full">
+            <img src="assets/images/avatars/male-02.jpg" alt="" class="w-6 h-6 -mx-1 rounded-full">
+            <img src="assets/images/avatars/male-03.jpg" alt="" class="w-6 h-6 -mx-1 rounded-full">
+            <img src="assets/images/avatars/male-04.jpg" alt="" class="w-6 h-6 -mx-1 rounded-full"> -->
+        </div>
+    </div>
+    <div class="flex items-center justify-between p-2 bg-white rounded-md shadow-sm workers-item">
+        <div class="flex flex-col gap-3 text">
+            <p class="mb-0">
+                <span class="inline-block w-2 h-2 bg-red-600 rounded-full badge"></span>
+                <span class="mx-2 text-lg title text-primary">{{ 'home.cards.inactive_workers' | transloco }}</span>
+            </p>
+            <p class="mb-0 number">
+                <span class="text-black head">{{ 'home.cards.count' | transloco }} : </span>
+                <span class="mx-2 text-lg data text-primary">{{ inActiveWorkersCount ? inActiveWorkersCount : 0 }}</span>
+            </p>
+        </div>
+        <div class="flex items-center justify-start gap-0 p-x-2 imgs">
+            <!-- <img src="assets/images/avatars/male-01.jpg" alt="" class="w-6 h-6 rounded-full">
+            <img src="assets/images/avatars/male-02.jpg" alt="" class="w-6 h-6 -mx-1 rounded-full">
+            <img src="assets/images/avatars/male-03.jpg" alt="" class="w-6 h-6 -mx-1 rounded-full">
+            <img src="assets/images/avatars/male-04.jpg" alt="" class="w-6 h-6 -mx-1 rounded-full"> -->
+        </div>
+    </div>
+</div>

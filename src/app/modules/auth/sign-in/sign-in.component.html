@@ -1,0 +1,121 @@
+<div
+    class="flex flex-col items-center h-full relative flex-auto min-w-0 sm:flex-row md:items-start sm:justify-center md:justify-start bg-[#F8F6F9]">
+    <div
+        class="w-full px-4 py-8 md:flex md:items-center md:justify-center bg-[#F8F6F9] sm:w-auto md:h-full md:w-1/2 sm:p-12 md:p-16 md:pb-12 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card">
+        <!-- animate-bounce ease-in-out animate-duration-0 -->
+        <div class="w-full mx-auto max-w-150 sm:w-[500px] sm:mx-0 h-full bg-transparent form_container">
+            <!-- animate-bounce linear-in-out animate-duration-0 -->
+            <!-- Logo -->
+            <div class="w-[200px] h-[80px] text-center flex justify-center mx-auto">
+                <img src="assets/images/logo/logo-colored.svg" />
+            </div>
+
+            <!-- Title -->
+            <div class="text-center">
+                <div class="mt-8 text-[28px] font-bold leading-tight tracking-tight">
+                    {{ "auth.titles.login_title" | transloco }}
+                </div>
+                <div class="mt-2 text-[16px] font-bold leading-tight tracking-tight">
+                    {{ "auth.titles.login" | transloco }}
+                </div>
+            </div>
+
+            <!-- Alert -->
+            <!-- <fuse-alert class="mt-8" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false" [type]="alert.type"
+                [@shake]="alert.type === 'error'">
+                {{ alert.message }}
+            </fuse-alert> -->
+
+            <!-- Sign in form -->
+            <form class="mt-8" [formGroup]="signInForm" #signInNgForm="ngForm">
+                <!-- Email field -->
+                <mat-form-field class="w-full mb-3">
+                    <mat-label class="text-[16px] mb-2 block font-normal mat_label text-[#0B0311]">{{
+                        "auth.form.fields.email" | transloco }}</mat-label>
+                    <div class="relative w-full">
+                        <input class="mt-2  bg-[#F0EEF1] pr-10 text-[#030311] text-[14px]" type="email" id="email"
+                            matInput [formControlName]="'email'" placeholder="{{
+                                'auth.form.fields.email_placeholder' | transloco
+                            }}" />
+                        <div class="absolute top-2 right-2">
+                            <i class="pi pi-envelope" style="color: #000"></i>
+                        </div>
+                    </div>
+
+                    <mat-error *ngIf="signInForm.get('email').hasError('required')">
+                        {{ "auth.form.messages.email_required" | transloco }}
+                    </mat-error>
+                    <mat-error *ngIf="signInForm.get('email').hasError('email')">
+                        {{ "auth.form.messages.email_invalid" | transloco }}
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password field -->
+                <mat-form-field class="w-full">
+                    <mat-label class="text-[16px] mb-2 block font-normal mat_label text-[#0B0311]">{{
+                        "auth.form.fields.password" | transloco
+                        }}</mat-label>
+                    <div class="relative w-full">
+                        <input id="password" matInput type="password" [formControlName]="'password'" #passwordField
+                            placeholder="{{
+                                'auth.form.fields.password_placeholder'
+                                    | transloco
+                            }}" class="pr-10 text-[#030311] text-[14px]" />
+                        <div class="absolute top-1 right-2">
+                            <i class="pi pi-lock" style="color: #000"></i>
+                        </div>
+                    </div>
+                    <button mat-icon-button type="button" (click)="
+                            passwordField.type === 'password'
+                                ? (passwordField.type = 'text')
+                                : (passwordField.type = 'password')
+                        " matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-slash'"></mat-icon>
+                    </button>
+                    <mat-error>
+                        {{ "auth.form.messages.password_required" | transloco }}
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Actions -->
+                <input type="checkbox" inputId="ny" class="bg-transparent" />
+                <label for="ny"
+                    class="text-[#0B0311] mr-2 font-bold leading-normal text-right whitespace-nowrap text-ellipsis">{{
+                    "auth.form.fields.remember_me" | transloco }}</label>
+
+                <!-- Submit button -->
+                <button class="w-full mt-6 rounded-md fuse-mat-button-large submit_button" mat-flat-button
+                    [color]="'primary'" [disabled]="signInForm.disabled" (click)="signIn()">
+                    <ng-container *ngIf="!signInForm.disabled">
+                        <span>
+                            {{ "auth.form.fields.sign_in" | transloco }}
+                        </span>
+                        <i class="mr-2 pi pi-arrow-left" style="color: #fff"></i>
+                    </ng-container>
+                    <mat-progress-spinner *ngIf="signInForm.disabled" [diameter]="24"
+                        [mode]="'indeterminate'"></mat-progress-spinner>
+                </button>
+                <div class="w-full mt-5 text-center">
+                    <a (click)="forgetPassword()"
+                        class="font-bold text-black text-[16px ] hover:underline cursor-pointer">
+                        {{ "auth.form.fields.forget_password" | transloco }}
+                    </a>
+                </div>
+            </form>
+            <div class="absolute bottom-10 right-0 left-0 justify-items-center text-center text-[#6A5C75] text-[14px]">
+                {{ "auth.titles.copyright" | transloco }}
+            </div>
+        </div>
+    </div>
+    <div class="relative items-center justify-center flex-auto h-full p-16 bg-[#4F008D] md:flex lg:px-28 dark:border-l">
+        <div class="relative z-10 w-full h-full">
+            <img class="w-full h-full" src="assets/images/ui/Computer login.gif" alt="" srcset="" />
+            <p class="img_title text-[#FCFCFD] text-center text-3xl">
+                {{ "auth.titles.login_title" | transloco }}
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+{
+    "header": {
+        "title": "Users",
+        "desc": "There is a long-established fact that readable content "
+    },
+    "filter": {
+        "title": "Search and filter",
+        "btnName": "Search",
+        "SearchIdName": "Search by name, ID number, or email",
+        "SearchRole": "Search by job role",
+        "ChooseBranch": "Choose the branch",
+        "placeSearchOn": "Search",
+        "PlaceChoose": "Choose the job role",
+        "SelectBranch": "choose the branch",
+        "PH_SelectBranch": "Select the branch",
+        "SelectRole": "Search By Role",
+
+        "PH_SelectRole": "Select the job role",
+        "searchbyemail_number": "Search by name, ID number, or email",
+        "PH_searchbyemail_number": "Search",
+        "remove":"Remove"
+    },
+    "table": {
+        "name": "Username",
+        "email": "Email Address",
+        "phoneNumber": "Phone Number",
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive",
+        "lastLogin": "Last Login",
+        "role": "Role"
+    },
+    "addUserForm": {
+        "user_info": "User Information",
+        "Account_info": "Account Information",
+        "name": "User Name",
+        "PH_name": "Enter User Name",
+        "password": "Password",
+        "PH_password": "Enter Password",
+        "Conf_Password": "Confirm Password",
+        "PH_Conf_Password": "Confirm Password",
+        "phone": "Mobile Number",
+        "PH_phone": "Enter Mobile Number",
+        "Address": "Address",
+        "PH_Address": "Enter Address",
+        "mandatory":"mandatory",
+        "Nationality": "Nationality ",
+        "PH_Nationality": "select Nationality ",
+        "Email": "Email",
+        "PH_Email": "Enter Email",
+        "Role": "Enter Job role",
+        "Lang": "language",
+        "PH_Lang": "Choose language",
+        "Branches": "Branches allowed to enter ",
+        "PH_Branches": "choose Branches",
+        "store": "Stores allowed to enter ",
+        "PH_store": "Select Stores",
+        "YouCAnCheckBOx": "You can send the employee's login information to your email",
+        "required_Massege":"this field is required",
+        "required_Email":"this Email Not Valied"
+
+    }
+}

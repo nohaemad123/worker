@@ -1,0 +1,12 @@
+.custom-icon {
+    position: absolute;
+    z-index: 1;
+    top: 21px;
+    font-size: 20px;
+}
+
+:host {
+    ::ng-deep .p-dropdown-label {
+        padding-right: 40px !important;
+    }
+}

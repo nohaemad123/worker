@@ -1,0 +1,14 @@
+<p class="p-2 text-xl font-bold text-primary">{{"home.cards.companies" | transloco}}</p>
+<div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions"
+      [yaxis]="chartOptions.yaxis"
+      [xaxis]="chartOptions.xaxis"
+      [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors"
+      [grid]="chartOptions.grid"
+    ></apx-chart>
+  </div>

@@ -1,0 +1,46 @@
+<!-- <form [formGroup]="otpForm"> -->
+<div>
+    <span
+        class="block mb-5 text-2xl font-bold text-center text-black p-text-secondary"
+    >
+        {{ "auth.form.fields.confirm_email" | transloco }}
+    </span>
+    <span
+        class="flex flex-col items-center justify-center mb-5 text-xl font-medium text-grey"
+    >
+        <span class="block">
+            {{ "auth.form.fields.code_sent_to_email" | transloco }}</span
+        >
+        <span class="block">{{ email }}</span>
+    </span>
+    <!-- Email field -->
+
+    <div class="relative pb-4 text-center" style="direction: ltr">
+        <ng-otp-input [formCtrl]="code" [config]="{ length: 4 }"></ng-otp-input>
+    </div>
+
+    <div class="w-full gap-2 text-center">
+        <button
+            class="w-full mt-6 rounded-md fuse-mat-button-large submit_button"
+            mat-flat-button
+            [color]="'primary'"
+            [disabled]="code.disabled"
+            type="button"
+            (click)="onSubmit()"
+        >
+            <ng-container *ngIf="!code.disabled">
+                <span>
+                    {{ "auth.form.fields.continue" | transloco }}
+                </span>
+                <i class="mr-2 pi pi-arrow-left" style="color: #fff"></i>
+            </ng-container>
+            <mat-progress-spinner
+                *ngIf="code.disabled"
+                [diameter]="24"
+                [mode]="'indeterminate'"
+            ></mat-progress-spinner>
+        </button>
+    </div>
+</div>
+
+<!-- </form> -->

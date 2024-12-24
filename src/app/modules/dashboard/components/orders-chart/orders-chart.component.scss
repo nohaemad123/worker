@@ -1,0 +1,17 @@
+#orders-chart {
+    max-width: 480px;
+    margin: 35px auto;
+    padding: 0;
+    height: 350px;
+  }
+  
+  ::ng-deep {
+    #orders-chart {
+        .apexcharts-legend-text {
+            margin-inline-start: 10px;
+            font-size: 14px !important; 
+            font-weight: semi-bold !important;
+            font-family: 'Cairo', sans-serif !important;
+        }
+    }
+  }

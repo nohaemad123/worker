@@ -1,0 +1,173 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Advertisements">{{
+                        "advertisements.add_edit.breadcrumb.link" | transloco
+                        }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span>{{
+                        (
+                        advId ?
+                        "advertisements.add_edit.breadcrumb.edit_title" :
+                        "advertisements.add_edit.breadcrumb.add_title"
+                        ) | transloco
+                        }}</span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditAdvSubmit()" [formGroup]="advForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    {{ (
+                    advId ?
+                    "advertisements.add_edit.breadcrumb.edit_title" :
+                    "advertisements.add_edit.breadcrumb.add_title"
+                    ) | transloco
+                    }}
+                </h3>
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <div class="">
+                        <label for="start_date" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "advertisements.add_edit.form.labels.date"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="flex items-center justify-between w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311] picker">
+                            <input matInput [matDatepicker]="picker" formControlName="Date" 
+                            [min]="today"
+                            >
+                            <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+                        </div>
+                        <mat-datepicker  #picker></mat-datepicker>
+                        <div *ngIf="
+                                advForm.controls.Date.invalid &&
+                                (advForm.controls.Date.dirty ||
+                                    advForm.controls.Date.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "advertisements.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <!-- <div class="">
+                        <label for="order" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "advertisements.add_edit.form.labels.advertisement_order"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="order" type="number" appPositiveNumber name="order" formControlName="Order"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'advertisements.add_edit.form.labels.advertisement_order'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                advForm.controls.Order.invalid &&
+                                (advForm.controls.Order.dirty ||
+                                    advForm.controls.Order.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "advertisements.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div> -->
+                    <!-- imageFile -->
+                    <div class="">
+                        <label for="start_date" class="block w-full text-[16px] mb-2 font-medium whitespace-nowrap">
+                            {{
+                            "advertisements.add_edit.form.labels.choose_image"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div
+                            class="image text-center bg-[#FDFBFE] shadow-[0px_4px_15px_0px_#E4DDE90D] border border-[#4F008D14] rounded-[4px] w-[240px] h-[240px]">
+                            <div class="" *ngIf="!imageFile.img">
+                                <label for="customFileImage" class="image-label">
+                                    <div
+                                        class="icon-wrapper m-auto mt-[80px] block w-[40px] h-[40px] bg-white border-[0.2px] rounded-full border-[#4F008D0D] shadow-[box-shadow: 0px_4px_12px_0px_#0000000A]">
+                                        <mat-icon
+                                            class="w-5 h-5 m-auto mt-2 text-gray-500 min-w-5 min-h-5 group-hover:text-primary"
+                                            [svgIcon]="'feather:upload'"></mat-icon>
+                                    </div>
+    
+                                    <span class="block text-[14px] mt-2 text-primary font-bold">
+                                        {{
+                                        "advertisements.add_edit.form.labels.choose_image"
+                                        | transloco
+                                        }}
+                                    </span>
+                                </label>
+                            </div>
+                            <div (click)="triggerFileInput()" class="p-1 w-[240px] h-[240px]">
+                                <img class="thumb-img rounded-[4px] w-full h-full  object-contain" *ngIf="imageFile.img"
+                                    [src]="imageFile.img" alt="" />
+                            </div>
+    
+                            <input class="upload_image" 
+                            type="file" name="ImageFile" 
+                            formControlName="ImageFile"
+                                
+                            (change)="showPreviewFile($event)" id="customFileImage" accept="image/*"
+                                style="
+                                    opacity: 0;
+                                    position: absolute;
+                                    cursor: pointer;
+                                    z-index: 102;
+                                " #fileInput />
+                            <div class="edit" for="customFileImage">
+                                <i data-feather="edit-2" class="badge badge-pill badge-secondary badge-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button
+                        id="submitButton"
+                        type="submit"
+                        [disabled]="advForm.invalid || !imageFile.img || addEditLoading"
+                        class="rounded-lg shadow-sm w-[280px]
+                         text-white 
+                        radius-[8px] text-[16px] 
+                        py-3 bg-primary border border-transparent"
+                    >
+                        <span>
+                            {{ (
+                                advId ? 
+                                "advertisements.add_edit.form.labels.submit_edit" :
+                                "advertisements.add_edit.form.labels.submit_add"
+                            ) | transloco }}</span
+                        >
+                    </button>
+    
+                    <button
+                        id="cancelButton"
+                        type="button"
+                        (click)="cancelAdv()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]"
+                    >
+                        {{
+                            "advertisements.add_edit.form.labels.cancel" | transloco
+                        }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

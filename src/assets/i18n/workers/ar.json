@@ -1,0 +1,57 @@
+{
+    "view": {
+        "title": "عرض العمال الموجودين على النظام",
+        "buttons": {
+            "delete": "العمال المحذوفين",
+            "add": "اضافة عامل"
+        },
+        "filter": {
+            "code": "بحث بالكود",
+            "name": "اسم الشركة",
+            "number": "الرقم الضريبي للشركة",
+            "place_number": "رقم الاقامة",
+            "worker_name": "اسم العامل",
+            "place_number_search": "رقم الاقامة",
+            "worker_name_search": "اسم العامل"
+        },
+        "table": {
+            "name": "اسم العامل",
+            "code": "كود العامل",
+            "experience": "سنوات الخبرة",
+            "age": "العمر",
+            "job": "الوظيفة",
+            "service": "الخدمات المقدمة",
+            "nationality": "الجنسية"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "العمال",
+            "add_title": "اضافة عامل جديد",
+            "edit_title": "تعديل عامل"
+        },
+        "form": {
+            "labels": {
+                "code": "كود العامل",
+                "name": "اسم العامل",
+                "age": "العمر",
+                "experience": "سنوات الخبرة",
+                "services_provided": "الخدمات المقدمة",
+                "phone_number": "رقم الجوال",
+                "job": "اختار الوظيفة",
+                "nationality": "اختار الجنسية",
+                "branch": "اختار الفرع",
+                "residence_number": "رقم الاقامة",
+                "add_submit": "حفظ و اضافة عامل جديد",
+                "edit_submit": "تحديث البيانات",
+                "cancel": "الغاء",
+                "required": "هذا الحقل مطلوب",
+                "choose_image": "اختيار صوره",
+                "valid_phoneNumber": "من فضلك أدخل رقم هاتف صحيح ( 10 أرقام فقط )"
+            }
+        }
+    },
+    "deleted": {
+        "title": "الشركات المحذوفة"
+    }
+}

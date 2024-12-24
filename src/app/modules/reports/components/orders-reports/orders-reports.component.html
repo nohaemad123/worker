@@ -1,0 +1,53 @@
+<section class="w-full p-10">
+    <div class="title_actions_btn">
+        <div class="flex justify-between mt-2 mb-6">
+            <h1 class="text-2xl font-bold text-[#0B0311] mt-4">
+                {{ "reports.view.orders_title" | transloco }}
+            </h1>
+        </div>
+
+        <form [formGroup]="searchForm">
+            <div class="flex justify-start items-end bg-[#FDFBFE] gap-5 p-4 mb-6 rounded-md w-full">
+                <div class="w-1/3">
+                    <label class="block mb-2 font-bold font-" for="codeInput">{{
+                        "reports.view.filter.date_from" | transloco
+                        }}</label>
+
+                    <div
+                        class="flex items-center justify-between w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311] picker">
+                        <input matInput [matDatepicker]="picker" formControlName="from" (dateChange)="search()"
+                        [max]="searchForm.get('to')?.value" >
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"  ></mat-datepicker-toggle>
+                    </div>
+                    <mat-datepicker #picker></mat-datepicker>
+                </div>
+                <div class="w-1/3">
+                    <label class="block mb-2 font-bold font-" for="codeInput">{{
+                        "reports.view.filter.date_to" | transloco
+                        }}</label>
+
+                    <div
+                        class="flex items-center justify-between w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311] picker">
+                        <input matInput [matDatepicker]="picker2" formControlName="to" (dateChange)="search()"
+                        [min]="searchForm.get('from')?.value" >
+                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    </div>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </div>
+                <div class="w-1/3">
+                    <button
+                        type="submit"
+                        (click)="resetSearch()"
+                        class="w-fit bg-red-600 text-[#ffffff] font-medium py-3 px-12 rounded-md"
+                       >
+                        {{ "reports.view.filter.reset" | transloco }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="">
+        <app-orders-table [tableConfig]="tableConfig" translationKey="reports" (paginationEmitter)="onPaginationChange($event)"
+            (actionEmitter)="onActionClick($event)"></app-orders-table>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pb-0 pt-4">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a href="">{{
+                        "companies.add_edit.breadcrumb.link" | transloco
+                    }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span>{{
+                        "companies.deleted.title" | transloco
+                    }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <h3
+        class="text-[#0B0311] text-[16px] mt-4 font-bold"
+    >
+    {{
+        "companies.deleted.title" | transloco
+    }}    </h3>
+
+    <div class="bg-white border-b-2 mt-2 border-l-2 border-r-2">
+        <app-data-table
+            [tableConfig]="tableConfig"
+            (paginationEmitter)="onPaginationChange($event)"
+            (actionEmitter)="onActionClick($event)"
+            (sortcal)="onSort($event)"
+        ></app-data-table>
+        <div></div>
+    </div>
+        </div>
+        </section>

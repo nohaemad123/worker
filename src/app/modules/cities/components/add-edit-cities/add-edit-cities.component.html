@@ -1,0 +1,115 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Cities">{{
+                        "cities.add_edit.breadcrumb.link" | transloco
+                        }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span *ngIf="!cityId">{{
+                        "cities.add_edit.breadcrumb.title_add" | transloco
+                        }}</span>
+                    <span *ngIf="cityId">{{
+                        "cities.add_edit.breadcrumb.title_edit" | transloco
+                        }}</span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditCitySubmit(cityForm)" [formGroup]="cityForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    <span *ngIf="!cityId">{{
+                        "cities.add_edit.breadcrumb.title_add" | transloco
+                        }}</span>
+                    <span *ngIf="cityId">{{
+                        "cities.add_edit.breadcrumb.title_edit" | transloco
+                        }}</span>
+                </h3>
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+
+                    <div class="">
+                        <label for="nameAr" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "cities.add_edit.form.labels.nameAr"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="nameAr" type="text" name="nameAr" formControlName="nameAr"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'cities.add_edit.form.labels.nameAr'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                cityForm.controls.nameAr.invalid &&
+                                (cityForm.controls.nameAr.dirty ||
+                                    cityForm.controls.nameAr.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "cities.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="nameEn" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "cities.add_edit.form.labels.nameEn"
+                            | transloco
+                            }}
+                            <!-- <span class="text-[#f00]">*</span> -->
+                        </label>
+                        <input id="nameEn" type="text" name="nameEn" formControlName="nameEn"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'cities.add_edit.form.labels.nameEn'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                cityForm.controls.nameEn.invalid &&
+                                (cityForm.controls.nameEn.dirty ||
+                                    cityForm.controls.nameEn.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "cities.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button id="submitButton" type="submit" [disabled]="cityForm.invalid"
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span *ngIf="!cityId">
+                            {{
+                            "cities.add_edit.form.labels.add_submit" | transloco
+                            }}
+                        </span>
+                        <span *ngIf="cityId">
+                            {{
+                            "cities.add_edit.form.labels.edit_submit" | transloco
+                            }}
+                        </span>
+                    </button>
+
+                    <button id="cancelButton" type="button" (click)="cancelCity()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{
+                        "cities.add_edit.form.labels.cancel" | transloco
+                        }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

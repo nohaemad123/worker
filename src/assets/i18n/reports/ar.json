@@ -1,0 +1,50 @@
+{
+    "view": {
+        "orders_title": "عرض تقارير الطلبات الموجودة على النظام",
+        "total_commissions_title": "عرض تقارير العمولات الإجمالى الموجودة على النظام",
+        "detailed_commissions_title": "عرض تقارير العمولات التفصيلى الموجودة على النظام",
+        "print": "طباعة التقرير",
+        "filter": {
+            "date": "بحث بالتاريخ",
+            "date_to": "إلى تاريخ",
+            "date_from": "من تاريخ",
+            "reset": "إعادة تعيين",
+            "companyName": "اسم الشركة",
+            "view_report": "عرض التقرير"
+        },
+        "table": {
+            "client_name": "اسم العميل",
+            "order_date": "تاريخ الطلب",
+            "edit_date": "تاريخ التعديل",
+            "nationality": "الجنسية",
+            "order_status": "حالة الطلب",
+            "payment_status": "حالة الدفع",
+            "total": "إجمالى القيمة",
+            "actions": "الإجراءات",
+            "operations": "العمليات",
+            "service_details": "تفاصيل الخدمة",
+            "company_name": "اسم الشركة",
+            "first_visit_date": "تاريخ أول زيارة",
+            "chosen_days": "الأيام المختارة",
+            "shift": "الفترة",
+            "companyBranchName": "اسم الفرع",
+            "contract_duration": "مدة العقد",
+            "workers_count": "عدد العمال",
+            "times_in_week": "كم مرة بالأسبوع",
+            "daily_hours": "عدد الساعات اليومية",
+            "bill_details": "تفاصيل الفاتورة",
+            "client": "العميل",
+            "cost": "التكلفة",
+            "discount": "الخصم",
+            "tax": "الضريبة",
+            "total_bill": "الإجمالى",
+            "phone_number": "رقم الجوال",
+            "address": "العنوان",
+            "service_title": "اسم الخدمة",
+            "branch_name": "اسم الفرع",
+            "order_number": "رقم الطلب",
+            "value": "القيمة",
+            "commission_percent": "نسبة العمولة"
+        }
+    }
+}

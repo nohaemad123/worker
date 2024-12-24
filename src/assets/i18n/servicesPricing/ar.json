@@ -1,0 +1,48 @@
+{
+    "view": {
+        "title": "عرض الخدمات المقدمة على النظام ",
+        "buttons": {
+            "add": "اضافة خدمة"
+        },
+        "filter": {
+            "service_code": " كود الخدمة"
+        },
+        "table": {
+            "typeOfService": "نوع الخدمة"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "link": "تسعير الخدمات",
+            "add_title": "اضافة خدمة جديدة",
+            "edit_title":"تعديل خدمة"
+        },
+        "form": {
+            "labels": {
+                "choose_service":"اختر الخدمة",
+                "branch":" الفرع",
+                "shift": "المدة",
+                "nationality": "الجنسية",
+                "price": "السعر",
+                "tax": "الضريبة",
+                "discount": "الخصم",
+                "job": "المهنة",
+                "workersCount": "عدد العمال",
+                "total": "إجمالى القيمة النهائية",
+                "actions": "الإجراءات",
+                "required": "هذا الحقل مطلوب",
+                "add_submit": "حفظ و اضافة خدمة",
+                "edit_submit": "تحديث البيانات",
+                "cancel": "الغاء"
+            },
+            "placeholders": {
+                "company": "الشركة",
+                "branch": " الفرع",
+                "customer": " العميل"
+            }
+        }
+    },
+    "deleted": {
+        "title": "الخدمات المحذوفة"
+    }
+}

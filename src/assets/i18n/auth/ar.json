@@ -1,0 +1,57 @@
+{
+    "titles": {
+        "login_title": "مرحباً بك في عاملة لتقديم الخدمات",
+        "login":"تسجيل دخول",
+        "register_title":"يرجى إدخال معلومات التسجيل الخاصة بك",
+        "copyright":"جميع الحقوق محفوظة لدي عاملة© ٢٠٢٤"
+    },
+    "form":{
+        "fields":
+            {
+                "name":"الاسم التجاري",
+                "name_placeholder":"ادخل الاسم التجاري",
+                "username":"اسم الصفحة",
+                "username_placeholder":"ادخل اسم الصفحة",
+                "phone":"رقم الهاتف",
+                "phone_placeholder":"ادخل رقم الهاتف",
+                "email":"البريد الالكتروني",
+                "email_placeholder":"ادخل البريد الالكتروني",
+                "password":"كلمه المرور",
+                "password_placeholder":"ادخل كلمه المرور",
+                "confirm_password":"تاكيد كلمه المرور",
+                "confirm_password_placeholder":"تاكيد كلمه المرور ",
+                "submit":"تسجيل",
+                "forget_password": "هل نسيت كلمة المرور؟",
+                "dont_have_account": "ليس لدى حساب؟",
+                "create_account": "تسجيل جديد",
+                "sign_in": "تسجيل الدخول",
+                "send_code":"ارسال الكود",
+                "have_account":"لدي حساب",
+                "remember_me":"ذكرني",
+                "confirm_email": "قم بتأكيد بريدك الألكتروني",
+                "code_sent_to_email": "تم ارسال الكود الي البريد الإلكتروني",
+                "continue": "متابعة",
+                "resend_code": "إعادة ارسال الكود",
+                "reset_password_text": "قم بإضافة كلمة مرور جديدة",
+                "reset_password": "اعادة تعيين كلمة المرور",
+                "password_required": "الرجاء ادخال كلمه المرور",
+                "password_must_match": "كلمه المرور يجب ان تكون متطابقه",
+                "reset_password_note": "يجب ان تكون مكونه من احرف كبيره وصغيرة وارقام ورموز",
+                "congratulatuins_message":"تهانينا..!",
+                 "congratulatuins_desc":"تم تغير كلمة المرور بنجاح قم بتسجيل الدخول."
+            },
+        "messages":{
+            "name_required":"الرجاء ادخال الاسم التجاري",
+            "username_required":"الرجاء ادخال اسم الصفحة",
+            "phone_required":"الرجاء ادخال رقم الهاتف",
+            "email_required":"الرجاء ادخال البريد الالكتروني",
+            "email_invalid":"البريد الالكتروني غير صحيح",
+            "password_required":"الرجاء ادخال كلمه المرور",
+            "password_invalid":"كلمه المرور يجب ان تحتوي على 8 حروف على الاقل",
+            "confirm_password_required":"الرجاء ادخال تاكيد كلمه المرور",
+            "code_invalid":"الكود غير صحيح",
+            "code_required":"الرجاء ادخال الكود",
+            "code_sent_success": "تم إرسال الكود إلى البريد الإلكترونى الذى قمت بإدخاله"
+        }
+    }
+}

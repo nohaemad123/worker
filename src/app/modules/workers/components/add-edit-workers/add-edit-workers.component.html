@@ -1,0 +1,319 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Workers">{{
+                        "workers.add_edit.breadcrumb.link" | transloco
+                        }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span *ngIf="!workerId">{{
+                        "workers.add_edit.breadcrumb.add_title" | transloco
+                        }}</span>
+                    <span *ngIf="workerId">{{
+                        "workers.add_edit.breadcrumb.edit_title" | transloco
+                        }}</span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditWorkerSubmit()" [formGroup]="workerForm">
+            <div class="bg-[#fff] p-5 radius-[8px] mt-5">
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    <span *ngIf="!workerId">{{
+                        "workers.add_edit.breadcrumb.add_title" | transloco
+                        }}</span>
+                    <span *ngIf="workerId">{{
+                        "workers.add_edit.breadcrumb.edit_title" | transloco
+                        }}</span>
+                </h3>
+                <div class="flex mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "workers.add_edit.form.labels.name" | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="Name" formControlName="Name"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'workers.add_edit.form.labels.name' | transloco
+                            }}" />
+                        <div *ngIf="
+                        workerForm.controls.Name.invalid &&
+                        (workerForm.controls.Name.dirty || workerForm.controls.Name.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "workers.add_edit.form.labels.age" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="number" name="Age" appPositiveNumber formControlName="Age"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'workers.add_edit.form.labels.age' | transloco
+                            }}" />
+                        <div *ngIf="
+                            workerForm.controls.Age.invalid &&
+                            (workerForm.controls.Age.dirty || workerForm.controls.Age.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "workers.add_edit.form.labels.experience"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="number" appPositiveNumber name="YearsOfExperience"
+                            formControlName="YearsOfExperience"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'workers.add_edit.form.labels.experience'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                         workerForm.controls.YearsOfExperience.invalid &&
+                         (workerForm.controls.YearsOfExperience.dirty || workerForm.controls.YearsOfExperience.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "workers.add_edit.form.labels.residence_number"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="ResidenceNumber" formControlName="ResidenceNumber"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'workers.add_edit.form.labels.residence_number'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                          workerForm.controls.ResidenceNumber.invalid &&
+                          (workerForm.controls.ResidenceNumber.dirty || workerForm.controls.ResidenceNumber.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "workers.add_edit.form.labels.phone_number"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="tel" name="Phone" formControlName="Phone"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'workers.add_edit.form.labels.phone_number'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                workerForm.controls.Phone.invalid &&
+                                (workerForm.controls.Phone.dirty ||
+                                    workerForm.controls.Phone.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "workers.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                        <div *ngIf="workerForm.controls.Phone.value && 
+                                 workerForm.controls.Phone.hasError('pattern')
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "workers.add_edit.form.labels.valid_phoneNumber"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-5 mt-3">
+                    <div class="w-2/3">
+                        <div class="flex gap-5 mt-3">
+                            <!-- <div class="w-1/2">
+                                <label
+                                    for="code"
+                                    class="block w-full text-[16px] font-medium whitespace-nowrap"
+                                >
+                                    {{
+                                        "workers.add_edit.form.labels.services_provided"
+                                            | transloco
+                                    }}
+                                    <span class="text-[#f00]">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="mr-2 pi pi-star custom-icon"></i>
+                                    <p-dropdown
+                                        [options]=""
+                                        placeholder="{{
+                                            'workers.add_edit.form.labels.services_provided'
+                                                | transloco
+                                        }}"
+                                        optionLabel="label"
+                                        styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]"
+                                    >
+                                    </p-dropdown>
+                                </div>
+                            </div> -->
+                            <div class="w-full">
+                                <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                                    {{
+                                    "workers.add_edit.form.labels.job"
+                                    | transloco
+                                    }}
+                                    <span class="text-[#f00]">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="mr-2 pi pi-briefcase custom-icon"></i>
+                                    <p-dropdown [options]="allJobs" name="JobId" formControlName="JobId"
+                                        optionLabel="name" optionValue="id" placeholder="{{
+                                            'workers.add_edit.form.labels.job'
+                                                | transloco
+                                        }}" optionLabel="name"
+                                        styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                                    </p-dropdown>
+                                </div>
+                                <div *ngIf="
+                                workerForm.controls.JobId.invalid &&
+                                (workerForm.controls.JobId.dirty || workerForm.controls.JobId.touched)"
+                                    class="mt-4 text-danger ms-2">
+                                    <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 mt-3">
+                            <div class="w-1/2">
+                                <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                                    {{
+                                    "workers.add_edit.form.labels.nationality"
+                                    | transloco
+                                    }}
+                                    <span class="text-[#f00]">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="mr-2 pi pi-flag custom-icon"></i>
+                                    <p-dropdown [options]="allNationalities" name="NationalityId"
+                                        formControlName="NationalityId" optionLabel="name" optionValue="id" placeholder="{{
+                                            'workers.add_edit.form.labels.nationality'
+                                                | transloco
+                                        }}" optionLabel="name"
+                                        styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                                    </p-dropdown>
+                                </div>
+                                <div *ngIf="
+                                workerForm.controls.NationalityId.invalid &&
+                                (workerForm.controls.NationalityId.dirty || workerForm.controls.NationalityId.touched)"
+                                    class="mt-4 text-danger ms-2">
+                                    <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                                </div>
+                            </div>
+                            <div class="w-1/2">
+                                <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                                    {{
+                                    "workers.add_edit.form.labels.branch"
+                                    | transloco
+                                    }}
+                                    <span class="text-[#f00]">*</span>
+                                </label>
+                                <div class="relative">
+                                    <i class="mr-2 pi pi-building custom-icon"></i>
+                                    <p-dropdown name="CompanyBranchId" formControlName="CompanyBranchId"
+                                        [options]="allCompaniesBranches" optionLabel="branchName" optionValue="id"
+                                        placeholder="{{
+                                            'workers.add_edit.form.labels.branch'
+                                                | transloco
+                                        }}"
+                                        styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                                    </p-dropdown>
+                                </div>
+                                <div *ngIf="
+                                workerForm.controls.CompanyBranchId.invalid &&
+                                (workerForm.controls.CompanyBranchId.dirty || workerForm.controls.CompanyBranchId.touched)"
+                                    class="mt-4 text-danger ms-2">
+                                    <b>{{ "workers.add_edit.form.labels.required" | transloco }}*</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/3">
+                        <div
+                            class="image text-center block bg-[#FDFBFE] p-10 h-[250px] border border-[#4F008D14] rounded-[8px]">
+                            <div class="" *ngIf="!imageFile.img">
+                                <label for="customFileImage" class="image-label">
+                                    <div
+                                        class="icon-wrapper m-auto mt-[30px] block w-[40px] h-[40px] bg-white border-[0.2px] rounded-full border-[#4F008D0D] shadow-[box-shadow: 0px_4px_12px_0px_#0000000A]">
+                                        <mat-icon
+                                            class="w-5 h-5 m-auto mt-2 text-gray-500 min-w-5 min-h-5 group-hover:text-primary"
+                                            [svgIcon]="'feather:upload'"></mat-icon>
+                                    </div>
+
+                                    <span class="block text-[14px] mt-2 text-primary font-bold">
+                                        {{
+                                        "workers.add_edit.form.labels.choose_image"
+                                        | transloco
+                                        }}
+                                    </span>
+                                </label>
+                            </div>
+                            <div (click)="triggerFileInput()" class="text-center">
+                                <img class="thumb-img w-[200px] h-[200px] m-auto" *ngIf="imageFile.img"
+                                    [src]="imageFile.img" alt="" />
+                            </div>
+                            <input class="upload_image" (change)="showPreviewFile($event)" type="file"
+                                id="customFileImage" accept="image/*" style="
+                                    opacity: 0;
+                                    position: absolute;
+                                    cursor: pointer;
+                                    z-index: 102;
+                                " name="ImageFile" formControlName="ImageFile" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button type="submit" [disabled]="workerForm.invalid"
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span *ngIf="!workerId">
+                            {{
+                            "workers.add_edit.form.labels.add_submit"
+                            | transloco
+                            }}
+                        </span>
+                        <span *ngIf="workerId">
+                            {{
+                            "workers.add_edit.form.labels.edit_submit"
+                            | transloco
+                            }}
+                        </span>
+                    </button>
+
+                    <button type="button" (click)="cancelWorker()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{ "workers.add_edit.form.labels.cancel" | transloco }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

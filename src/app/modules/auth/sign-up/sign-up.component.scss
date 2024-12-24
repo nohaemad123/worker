@@ -1,0 +1,10 @@
+// @import "../../../../styles/formStyles.scss";
+
+.ngx-intl-wrapper {
+    direction: ltr;
+    ngx-intl-tel-input {
+        width: 100%;
+        display: block;
+
+    }
+}

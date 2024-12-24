@@ -1,0 +1,143 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Services">{{ "services.add_edit.breadcrumb.link" | transloco }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span *ngIf="!serviceId">{{ "services.add_edit.breadcrumb.title_add" | transloco }}</span>
+                    <span *ngIf="serviceId">{{ "services.add_edit.breadcrumb.title_edit" | transloco }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form (ngSubmit)="addEditServiceSubmit()" [formGroup]="ServicesForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    <span *ngIf="!serviceId">{{ "services.add_edit.breadcrumb.title_add" | transloco }}</span>
+                    <span *ngIf="serviceId">{{ "services.add_edit.breadcrumb.title_edit" | transloco }}</span>
+                </h3>
+
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+
+                    <!--  name ar -->
+                    <div class="">
+                        <label for="nameAr" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "services.add_edit.form.labels.nameAr" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="nameAr" formControlName="nameAr"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'services.add_edit.form.labels.nameAr' | transloco }}" />
+                        <div *ngIf="
+                                ServicesForm.controls.nameAr.invalid &&
+                                (ServicesForm.controls.nameAr.dirty || ServicesForm.controls.nameAr.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "services.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!--  name en -->
+                    <div class="">
+                        <label for="nameEn" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "services.add_edit.form.labels.nameEn" | transloco }}
+                            <!-- <span class="text-[#f00]">*</span> -->
+                        </label>
+                        <input type="text" name="nameEn" formControlName="nameEn"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'services.add_edit.form.labels.nameEn' | transloco }}" />
+                        <div *ngIf="
+                                ServicesForm.controls.nameEn.invalid &&
+                                (ServicesForm.controls.nameEn.dirty || ServicesForm.controls.nameEn.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b>{{ "services.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <!-- service type -->
+                    <div class="">
+                        <label for="systemOfServiceId" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "services.add_edit.form.labels.type" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-star custom-icon"></i>
+                            <p-dropdown [options]="serviceType" formControlName="systemOfServiceId" optionLabel="name"
+                                optionValue="id"
+                                placeholder="{{ 'services.add_edit.form.placeholders.type' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!-- shift -->
+                    <div class="">
+                        <label for="shiftId" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "services.add_edit.form.labels.shift" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="mr-2 pi pi-sun custom-icon"></i>
+                            <p-dropdown [options]="shiftList" formControlName="shiftId" optionLabel="name"
+                                optionValue="id"
+                                placeholder="{{ 'services.add_edit.form.placeholders.shift' | transloco }}"
+                                styleClass="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 mt-2 rounded-lg text-[#030311]">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- women Is Required -->
+                    <div class="mt-3">
+                        <label for="womenIsRequired" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "services.add_edit.form.labels.must_have_woman" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="flex mt-3 align-items-center">
+                            <p-radioButton name="womenIsRequired" [value]="true" formControlName="womenIsRequired"
+                                styleClass="custom-radio" />
+                            <label class="mx-2 custom-radio-label">
+                                {{ "services.add_edit.form.labels.yes" | transloco }}
+                            </label>
+                        </div>
+                        <div class="flex mt-3 align-items-center custom-radio-container">
+                            <p-radioButton name="womenIsRequired" [value]="false" formControlName="womenIsRequired"
+                                styleClass="custom-radio" />
+                            <label class="mx-2 ">
+                                {{ "services.add_edit.form.labels.no" | transloco }}
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button type="submit" [disabled]="ServicesForm.invalid"
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span *ngIf="!serviceId">
+                            {{ "services.add_edit.form.labels.submit_add" | transloco }}
+                        </span>
+                        <span *ngIf="serviceId">
+                            {{ "services.add_edit.form.labels.submit_edit" | transloco }}
+                        </span>
+                    </button>
+
+                    <button type="button" (click)="cancelService()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{ "services.add_edit.form.labels.cancel" | transloco }}
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</section>

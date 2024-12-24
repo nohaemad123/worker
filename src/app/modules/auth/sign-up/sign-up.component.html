@@ -1,0 +1,160 @@
+<div
+    class="flex flex-col items-center flex-auto min-w-0 sm:flex-row md:items-start sm:justify-center md:justify-start form_container">
+    <div
+        class="w-full px-4 py-8 md:flex md:items-center md:justify-center sm:w-auto md:h-full md:w-1/2 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card">
+        <div class="w-full mx-auto max-w-100 sm:w-100 sm:mx-0">
+            <!-- Logo -->
+            <div class="w-3/5 h-3/5">
+                <img src="assets/images/logo/logo-colored.svg">
+            </div>
+
+            <!-- Title -->
+            <div class="mt-8 text-xl font-extrabold leading-tight tracking-tight">
+                {{"auth.titles.register_title" | transloco}}
+            </div>
+            <!-- <div class="flex items-baseline mt-0.5 font-medium">
+                <div>Don't have an account?</div>
+                <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-up']">Sign up
+                </a>
+            </div> -->
+
+
+            <!-- Alert -->
+            <fuse-alert class="mt-8" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false" [type]="alert.type"
+                [@shake]="alert.type === 'error'">
+                {{alert.message}}
+            </fuse-alert>
+
+            <!-- Sign up form -->
+            <form class="mt-8" [formGroup]="signUpForm" #signUpNgForm="ngForm" (ngSubmit)="signUp()">
+
+                <mat-form-field class="w-full mb-3">
+                    <mat-label>{{"auth.form.fields.name" | transloco}}</mat-label>
+                    <input class="mt-2" type="name" id="name" matInput [formControlName]="'name'"
+                        placeholder="{{'auth.form.fields.name_placeholder' | transloco}}">
+                    <mat-error *ngIf="signUpForm.get('name').hasError('required')">
+                        {{'auth.form.messages.name_required' | transloco}}
+                    </mat-error>
+
+                </mat-form-field>
+                <mat-form-field class="w-full mb-3">
+                    <mat-label>{{"auth.form.fields.email" | transloco}}</mat-label>
+                    <input class="mt-2" type="email" id="email" matInput [formControlName]="'email'"
+                        placeholder="{{'auth.form.fields.email_placeholder' | transloco}}">
+                    <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+                        {{'auth.form.messages.email_required' | transloco}}
+                    </mat-error>
+                    <mat-error *ngIf="signUpForm.get('email').hasError('email')">
+                        {{'auth.form.messages.email_invalid' | transloco}}
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-label
+                    class="block w-full text-lg leading-normal text-right whitespace-nowrap text-ellipsis">{{"auth.form.fields.phone"
+                    | transloco}}</mat-label>
+                <div class="w-full mt-2 mb-3 border-2 rounded-md ngx-intl-wrapper">
+                    <ngx-intl-tel-input [cssClass]="'register-ngx-intl-tel-input'"
+                        [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true"
+                        [enablePlaceholder]="false" [searchCountryFlag]="true" [searchCountryField]="[
+                        SearchCountryField.Iso2,
+                        SearchCountryField.Name
+                    ]" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.SaudiArabia" [maxLength]="15"
+                        [phoneValidation]="true" [separateDialCode]="true" [numberFormat]="PhoneNumberFormat.National"
+                        name="phone" formControlName="phone">
+                    </ngx-intl-tel-input>
+                    <!-- customPlaceholder="{{'auth.form.fields.phone_placeholder' | transloco}}" -->
+                    <!-- <mat-error *ngIf="signUpForm.get('name').hasError('required')">
+                        {{'auth.form.messages.name_required' | transloco}}
+                    </mat-error> -->
+
+                </div>
+                <div *ngIf="
+                    signUpForm.controls.phone.invalid &&
+                        signUpForm.controls.phone.touched
+                    " class="mt-4 text-danger ms-2">
+                    {{'auth.form.messages.phone_required' | transloco}}
+
+
+                </div>
+                <mat-form-field class="w-full mt-3">
+                    <mat-label for="" class="input-lable">{{"auth.form.fields.username" | transloco}}</mat-label>
+                    <div class="relative w-full h-full">
+                        <input type="text" placeholder="{{'auth.form.fields.username_placeholder' | transloco}}"
+                            class="w-full py-1 mt-2 text-lg border-2 rounded-lg font-secondary text-secondary" matInput
+                            name="username" formControlName="username">
+                        <!-- domin -->
+                        <div
+                            class="absolute top-3 end-3 cursor-pointer bg-white left-1 border-r-2 pr-2 border-[#C2C2C2]-300">
+                            <span class="text-sm text-gray-600">https://{{hostname}}</span>
+                        </div>
+                    </div>
+                    <mat-error *ngIf="signUpForm.get('username').hasError('required')">
+                        {{'auth.form.messages.username_required' | transloco}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>{{"auth.form.fields.password" | transloco}}</mat-label>
+                    <input id="password" matInput type="password" [formControlName]="'password'" #passwordField
+                        placeholder="{{'auth.form.fields.password_placeholder' | transloco}}">
+                    <button mat-icon-button type="button"
+                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                        matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-slash'"></mat-icon>
+                    </button>
+                    <mat-error>
+                        {{'auth.form.messages.password_required' | transloco}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>{{"auth.form.fields.confirm_password" | transloco}}</mat-label>
+                    <input id="confirmPassword" matInput type="confirmPassword" [formControlName]="'confirmPassword'"
+                        #confirmPasswordField
+                        placeholder="{{'auth.form.fields.confirm_password_placeholder' | transloco}}">
+                    <button mat-icon-button type="button"
+                        (click)="confirmPasswordField.type === 'password' ? confirmPasswordField.type = 'text' : confirmPasswordField.type = 'password'"
+                        matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="confirmPasswordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="confirmPasswordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-slash'"></mat-icon>
+                    </button>
+                    <mat-error>
+                        {{'auth.form.messages.confirm_password_required' | transloco}}
+                    </mat-error>
+                </mat-form-field>
+
+
+
+                <button class="w-full mt-6 rounded-md fuse-mat-button-large" mat-flat-button [color]="'primary'"
+                    [disabled]="signUpForm.invalid">
+                    <!-- <span *ngIf="!signUpForm.invalid"> -->
+                    {{"auth.form.fields.create_account" | transloco}}
+                    <!-- </span> -->
+                    <!-- <mat-progress-spinner *ngIf="signUpForm.disabled" [diameter]="24"
+                        [mode]="'indeterminate'"></mat-progress-spinner> -->
+                </button>
+
+                <div class="inline-flex items-end justify-start w-full mt-4">
+                    <p>{{"auth.form.fields.have_account" | transloco}}</p>
+                    <a class="mx-2 font-medium underline text-md text-primary-500 hover:underline"
+                        [routerLink]="['/Sign-In']">
+                        {{"auth.form.fields.sign_in" | transloco}}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="relative items-center justify-center flex-auto hidden w-1/2 h-full p-16 overflow-hidden
+        bg-[url('assets/images/ui/auth-bg.png')] bg-cover bg-center
+         bg-gray-800 md:flex lg:px-28 dark:border-l">
+        <div class="relative z-10 w-3/4 h-3/4
+         bg-[url('assets/images/ui/auth-img.png')] bg-contain bg-center bg-no-repeat ">
+        </div>
+    </div>
+</div>

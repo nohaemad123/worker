@@ -1,0 +1,23 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import third party library styles here.
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* Perfect scrollbar */
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+/* Quill */
+@import '~quill/dist/quill.snow.css';
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #226ab2;
+    border-color: #226ab2;
+    color: #fff;
+    border-radius: 5px;
+    min-width: 35px;
+    height: 35px;
+}
+
+// p-dropdown{
+//      border: 0.75px solid #EDEDED;
+//      border-radius: 6px;
+// }

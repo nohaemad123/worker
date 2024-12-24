@@ -1,0 +1,200 @@
+<section class="w-full Add_offer_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Offers">{{
+                        "offers.add_edit.breadcrumb.link" | transloco
+                        }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span>{{
+                        "offers.add_edit.breadcrumb.title" | transloco
+                        }}</span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditOfferSubmit()" [formGroup]="offerForm">
+            <div class="bg-[#fff] p-5 radius-[8px] mt-5">
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    {{ "offers.add_edit.breadcrumb.title" | transloco }}
+                </h3>
+                <div class="flex mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <div class="">
+                        <label for="nameAr" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "offers.add_edit.form.labels.offer_nameAr" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="text" name="nameAr" formControlName="nameAr"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'offers.add_edit.form.labels.offer_nameAr' | transloco
+                            }}" />
+                        <div *ngIf="
+                                offerForm.controls.nameAr.invalid &&
+                                (offerForm.controls.nameAr.dirty ||
+                                    offerForm.controls.nameAr.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="nameEn" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "offers.add_edit.form.labels.offer_nameEn" | transloco }}
+                        </label>
+                        <input type="text" name="nameEn" formControlName="nameEn"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'offers.add_edit.form.labels.offer_nameEn' | transloco
+                            }}" />
+                        <div *ngIf="
+                                offerForm.controls.nameEn.invalid &&
+                                (offerForm.controls.nameEn.dirty ||
+                                    offerForm.controls.nameEn.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="discount" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "offers.add_edit.form.labels.discount" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="number" appPositiveNumber name="discount" formControlName="discount"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'offers.add_edit.form.labels.discount' | transloco
+                            }}" />
+                        <div *ngIf="
+                            offerForm.controls.discount.invalid &&
+                            (offerForm.controls.discount.dirty ||
+                                offerForm.controls.discount.touched)
+                        " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="cost" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "offers.add_edit.form.labels.offer_cost" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="number" appPositiveNumber name="cost" formControlName="cost"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'offers.add_edit.form.labels.offer_cost' | transloco
+                            }}" />
+                        <div *ngIf="
+                            offerForm.controls.cost.invalid &&
+                            (offerForm.controls.cost.dirty ||
+                                offerForm.controls.cost.touched)
+                        " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "offers.add_edit.form.labels.from_date" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="date" name="from_date" formControlName="from_date"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'offers.add_edit.form.labels.from_date' | transloco
+                            }}" />
+                        <div *ngIf="
+                            offerForm.controls.from_date.invalid &&
+                            (offerForm.controls.from_date.dirty ||
+                                offerForm.controls.from_date.touched)
+                        " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "offers.add_edit.form.labels.to_date" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input type="date" name="to_date" formControlName="to_date"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'offers.add_edit.form.labels.to_date' | transloco
+                            }}" />
+                        <div *ngIf="
+                            offerForm.controls.to_date.invalid &&
+                            (offerForm.controls.to_date.dirty ||
+                                offerForm.controls.to_date.touched)
+                        " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex gap-5 mt-3">
+                    <div class="w-1/2 form-select">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "offers.add_edit.form.labels.nationality"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <ng-select class="mt-2" [items]="nationalitiesList" bindLabel="name" [clearable]="false"
+                            placeholder="{{'offers.add_edit.form.labels.nationality' | transloco }}"
+                            [loading]="nationalitiesLoading" formControlName="nationality" bindValue="id"
+                            (search)="onNationalitiesSearch($event)" (clear)="onClearNationalities($event)"
+                            (scroll)="onNationalitiesScroll($event)" (scrollToEnd)="onNationalitiesScrollToEnd()">
+                        </ng-select>
+                        <div *ngIf="
+                    offerForm.controls.nationality.invalid &&
+                    (offerForm.controls.nationality.dirty ||
+                        offerForm.controls.nationality.touched)
+                " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                    <div class="w-1/2 form-select">
+                        <label for="shift" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "offers.add_edit.form.labels.shift"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <ng-select class="mt-2" [items]="shiftsList" bindLabel="name" [clearable]="false"
+                            placeholder="{{'offers.add_edit.form.labels.shift' | transloco }}"
+                            [loading]="shiftsLoading" formControlName="shift" bindValue="id"
+                            (search)="onShiftsSearch($event)" (clear)="onClearShifts($event)"
+                            (scroll)="onShiftsScroll($event)" (scrollToEnd)="onShiftsScrollToEnd()">
+                        </ng-select>
+                        <div *ngIf="
+                    offerForm.controls.shift.invalid &&
+                    (offerForm.controls.shift.dirty ||
+                        offerForm.controls.shift.touched)
+                " class="mt-4 text-danger ms-2">
+                            <b>{{ "offers.add_edit.form.labels.required" | transloco }}*</b>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="flex justify-end mt-8">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button type="submit" [disabled]="offerForm.invalid"
+                        class="rounded-lg shadow-sm w-[280px] text-white radius-[8px] text-[16px] py-3 bg-primary border border-transparent">
+                        <span>
+                            {{ "offers.add_edit.form.labels.submit" | transloco }}
+                        </span>
+                    </button>
+
+                    <button type="button" (click)="cancelOffer()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{ "offers.add_edit.form.labels.cancel" | transloco }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

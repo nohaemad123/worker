@@ -1,0 +1,516 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <a routerLink="/Companies">{{
+                        "companies.add_edit.breadcrumb.link" | transloco
+                        }}</a>
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    <span *ngIf="!companyId">{{
+                        "companies.add_edit.breadcrumb.add_title" | transloco
+                        }}</span>
+                    <span *ngIf="companyId && mode != 'view'">{{
+                        "companies.add_edit.breadcrumb.edit_title" | transloco
+                        }}</span>
+                    <span *ngIf="companyId && mode == 'view'">
+                        {{
+                        "companies.add_edit.breadcrumb.view_title" | transloco
+                        }}
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <form (ngSubmit)="addEditCompanySubmit()" [formGroup]="companyForm">
+            <div class="bg-[#FDFBFE] p-5 radius-[8px] mt-5">
+                <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                    <span *ngIf="!companyId">{{
+                        "companies.add_edit.breadcrumb.add_title" | transloco
+                        }}</span>
+                    <span *ngIf="companyId && mode != 'view'">{{
+                        "companies.add_edit.breadcrumb.edit_title" | transloco
+                        }}</span>
+                    <span *ngIf="companyId && mode == 'view'">
+                        {{
+                        "companies.add_edit.breadcrumb.view_title" | transloco
+                        }}
+                    </span>
+                </h3>
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <!-- <div class="">
+                        <label
+                            for="code"
+                            class="block w-full text-[16px] font-medium whitespace-nowrap"
+                        >
+                            {{
+                                "companies.add_edit.form.labels.code"
+                                    | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input
+                            id="companyCode"
+                            type="number"
+                            readOnly
+                            name="code"
+                            formControlName="code"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.code'
+                                    | transloco
+                            }}"
+                        />
+                        <div
+                            *ngIf="
+                                companyForm.controls.companyCode.invalid &&
+                                (companyForm.controls.companyCode.dirty ||
+                                    companyForm.controls.companyCode.touched)
+                            "
+                            class="mt-4 text-danger ms-2"
+                        >
+                            <b>
+                                {{
+                                    "companies.add_edit.form.labels.required"
+                                        | transloco
+                                }}
+                                *</b
+                            >
+                        </div>
+                    </div> -->
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "companies.add_edit.form.labels.name"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="companyName" type="text" name="companyName" formControlName="companyName"
+                            [readOnly]="mode == 'view'"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.name'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls.companyName.invalid &&
+                                (companyForm.controls.companyName.dirty ||
+                                    companyForm.controls.companyName.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{
+                            "companies.add_edit.form.labels.number"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="taxNumber" [readOnly]="mode == 'view'" type="text" name="taxNumber"
+                            formControlName="taxNumber"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.number'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls.taxNumber.hasError('required') &&
+                                (companyForm.controls.taxNumber.dirty ||
+                                    companyForm.controls.taxNumber.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                        <div *ngIf="
+                        companyForm.controls.taxNumber
+                            .hasError('pattern') &&
+                        (companyForm.controls.taxNumber
+                            .dirty ||
+                            companyForm.controls.taxNumber
+                                .touched)
+                    " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.valid_taxNumber"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code" class="block w-full text-[16px] font-normal whitespace-nowrap">
+                            {{
+                            "companies.add_edit.form.labels.commerical"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="commercialRegistrationNumber" [readOnly]="mode == 'view'"
+                            name="commercialRegistrationNumber" formControlName="commercialRegistrationNumber"
+                            type="text"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.commerical'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls
+                                    .commercialRegistrationNumber.invalid &&
+                                (companyForm.controls
+                                    .commercialRegistrationNumber.dirty ||
+                                    companyForm.controls
+                                        .commercialRegistrationNumber.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code"
+                            class="block w-full text-[16px] leading-normal text-right font-normal whitespace-nowrap text-ellipsis">
+                            {{
+                            "companies.add_edit.form.labels.mobile"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="companyMobileNumber" type="tel" [readOnly]="mode == 'view'"
+                            name="companyMobileNumber" formControlName="companyMobileNumber"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.mobile'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls.companyMobileNumber
+                                    .hasError('required') &&
+                                (companyForm.controls.companyMobileNumber
+                                    .dirty ||
+                                    companyForm.controls.companyMobileNumber
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                        <div *ngIf="
+                                companyForm.controls.companyMobileNumber
+                                    .hasError('pattern') &&
+                                (companyForm.controls.companyMobileNumber
+                                    .dirty ||
+                                    companyForm.controls.companyMobileNumber
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.valid_phoneNumber"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="code"
+                            class="block w-full text-[16px] leading-normal text-right font-normal whitespace-nowrap text-ellipsis">
+                            {{
+                            "companies.add_edit.form.labels.experience"
+                            | transloco
+                            }}
+                            <!-- <span class="text-[#f00]">*</span> -->
+                        </label>
+                        <input id="yearsOfExperience" [readOnly]="mode == 'view'" type="number" appPositiveNumber
+                            name="yearsOfExperience" formControlName="yearsOfExperience"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.experience'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls.yearsOfExperience
+                                    .invalid &&
+                                (companyForm.controls.yearsOfExperience.dirty ||
+                                    companyForm.controls.yearsOfExperience
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="code"
+                            class="block w-full text-[16px] leading-normal text-right font-normal whitespace-nowrap text-ellipsis">
+                            {{
+                            "companies.add_edit.form.labels.address"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="headquarters" [readOnly]="mode == 'view'" type="text" name="headquarters"
+                            formControlName="headquarters"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.address'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls.headquarters
+                                    .invalid &&
+                                (companyForm.controls.headquarters.dirty ||
+                                    companyForm.controls.headquarters
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <!-- email -->
+                    <div class="">
+                        <label for="email" class="block w-full text-[16px] font-medium whitespace-nowrap">
+                            {{ "companies.add_edit.form.labels.email" | transloco }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="email" [readOnly]="mode == 'view'" type="email" name="email" formControlName="Email"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{ 'companies.add_edit.form.labels.email' | transloco }}" />
+                        <div *ngIf="
+                                companyForm.controls.Email.invalid &&
+                                (companyForm.controls.Email.dirty || companyForm.controls.Email.touched)"
+                            class="mt-4 text-danger ms-2">
+                            <b *ngIf="companyForm.controls['Email'].errors?.['required']">{{
+                                "companies.add_edit.form.labels.required" | transloco }}*</b>
+                            <b *ngIf="companyForm.controls['Email'].errors?.['pattern']">{{
+                                "companies.add_edit.form.labels.email_true" | transloco }}*</b>
+
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <label for="licenseNumber" class="block w-full text-[16px] font-normal whitespace-nowrap">
+                            {{
+                            "companies.add_edit.form.labels.license_number"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="licenseNumber" [readOnly]="mode == 'view'" name="licenseNumber"
+                            formControlName="LaborRecruitmentLicense" type="text"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.license_number'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls
+                                    .LaborRecruitmentLicense.hasError('required') &&
+                                (companyForm.controls
+                                    .LaborRecruitmentLicense.dirty ||
+                                    companyForm.controls
+                                        .LaborRecruitmentLicense.touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                        <div *ngIf="
+                        companyForm.controls.LaborRecruitmentLicense
+                            .hasError('pattern') &&
+                        (companyForm.controls.LaborRecruitmentLicense
+                            .dirty ||
+                            companyForm.controls.LaborRecruitmentLicense
+                                .touched)
+                    " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.valid_licenseNumber"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                    <div class="">
+                        <label for="CenterOfCommunication"
+                            class="block w-full text-[16px] leading-normal text-right font-normal whitespace-nowrap text-ellipsis">
+                            {{
+                            "companies.add_edit.form.labels.call_center"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <input id="CenterOfCommunication" [readOnly]="mode == 'view'" type="tel"
+                            name="CenterOfCommunication" formControlName="CenterOfCommunication"
+                            class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                            placeholder="{{
+                                'companies.add_edit.form.labels.call_center'
+                                    | transloco
+                            }}" />
+                        <div *ngIf="
+                                companyForm.controls.CenterOfCommunication
+                                .hasError('required') &&
+                                (companyForm.controls.CenterOfCommunication
+                                    .dirty ||
+                                    companyForm.controls.CenterOfCommunication
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                        <div *ngIf="
+                                companyForm.controls.CenterOfCommunication
+                                    .hasError('pattern') &&
+                                (companyForm.controls.CenterOfCommunication
+                                    .dirty ||
+                                    companyForm.controls.CenterOfCommunication
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.valid_phoneNumber"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="commissionPercentage"
+                            class="block w-full text-[16px] leading-normal text-right font-normal whitespace-nowrap text-ellipsis">
+                            {{
+                            "companies.add_edit.form.labels.commission_percentage"
+                            | transloco
+                            }}
+                            <span class="text-[#f00]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="absolute p-2 text-gray-400 -translate-y-1/2 border border-gray-400 rounded-md fas fa-percent top-[55%] end-4"></i>
+                            <input id="commissionPercentage" [readOnly]="mode == 'view'" type="number" appPositiveNumber
+                                max="100" name="commissionPercentage" formControlName="CommotionRate"
+                                class="w-full bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-2 text-[14px] rounded-lg font-secondary text-[#030311]"
+                                placeholder="{{
+                                'companies.add_edit.form.labels.commission_percentage'
+                                    | transloco
+                            }}" />
+                        </div>
+                        <div *ngIf="
+                                companyForm.controls.CommotionRate
+                                .hasError('required') &&
+                                (companyForm.controls.CommotionRate
+                                    .dirty ||
+                                    companyForm.controls.CommotionRate
+                                        .touched)
+                            " class="mt-4 text-danger ms-2">
+                            <b>
+                                {{
+                                "companies.add_edit.form.labels.required"
+                                | transloco
+                                }}
+                                *</b>
+                        </div>
+                    </div>
+                    <!-- imageFile -->
+                    <div class="">
+                        <div
+                            class="image text-center bg-[#FDFBFE] shadow-[0px_4px_15px_0px_#E4DDE90D] border border-[#4F008D14] rounded-[4px] w-[140px] h-[140px]">
+                            <div class="" *ngIf="!imageFile.img">
+                                <label for="customFileImage" class="image-label">
+                                    <div
+                                        class="icon-wrapper m-auto mt-[30px] block w-[40px] h-[40px] bg-white border-[0.2px] rounded-full border-[#4F008D0D] shadow-[box-shadow: 0px_4px_12px_0px_#0000000A]">
+                                        <mat-icon
+                                            class="w-5 h-5 m-auto mt-2 text-gray-500 min-w-5 min-h-5 group-hover:text-primary"
+                                            [svgIcon]="'feather:upload'"></mat-icon>
+                                    </div>
+
+                                    <span class="block text-[14px] mt-2 text-primary font-bold">
+                                        {{
+                                        "companies.add_edit.form.labels.choose_image"
+                                        | transloco
+                                        }}
+                                    </span>
+                                </label>
+                            </div>
+                            <div (click)="triggerFileInput()" class="p-1 w-[140px] h-[140px]">
+                                <img class="object-contain w-full h-full thumb-img" *ngIf="imageFile.img"
+                                    [src]="imageFile.img" alt="" />
+                            </div>
+
+                            <input class="upload_image" type="file" name="ImageFile" formControlName="ImageFile"
+                                multiple="multiple" (change)="showPreviewFile($event)" id="customFileImage"
+                                accept="image/*" style="
+                                    opacity: 0;
+                                    position: absolute;
+                                    cursor: pointer;
+                                    z-index: 102;
+                                " #fileInput />
+                            <div class="edit" for="customFileImage">
+                                <i data-feather="edit-2" class="badge badge-pill badge-secondary badge-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8" *ngIf="mode !== 'view'">
+                <div class="flex mb-2 gap-x-5 btns-wrapper">
+                    <button id="submitButton" type="submit" [disabled]="companyForm.invalid" class="rounded-lg shadow-sm w-[280px]
+                         text-white 
+                        radius-[8px] text-[16px] 
+                        py-3 bg-primary border border-transparent">
+                        <span *ngIf="!isEdit">
+                            {{
+                            "companies.add_edit.form.labels.add_submit"
+                            | transloco
+                            }}</span>
+                        <span *ngIf="isEdit">
+                            {{
+                            "companies.add_edit.form.labels.edit_submit"
+                            | transloco
+                            }}</span>
+                    </button>
+
+                    <button id="cancelButton" type="button" (click)="cancelCompany()"
+                        class="rounded-lg shadow-sm w-[280px] text-[#9D90A7] radius-[8px] text-[16px] py-3 bg-transparent border border-[#9D90A7]">
+                        {{
+                        "companies.add_edit.form.labels.cancel" | transloco
+                        }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

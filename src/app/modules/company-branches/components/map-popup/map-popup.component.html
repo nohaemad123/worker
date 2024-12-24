@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="auto-complete-wrapper">
+        <mat-form-field class="w-full mb-5">
+            <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto"
+                placeholder="{{ 'companyBranches.add_edit.form.labels.search_for_location' | transloco }}">
+        </mat-form-field>
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let place of placesSearchResults" [value]="place" (click)="openLocation(place)">
+                {{ place.display_name }}
+            </mat-option>
+        </mat-autocomplete>
+    </div>
+    <div class="relative map-wrapper">
+        <div class="" leaflet class="w-[36vw] h-[40vh]" [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+        </div>
+        <button class="bg-[#4F008D] w-10 h-10 rounded-md text-center absolute bottom-4 end-8 z-[1000]" (click)="locateUser()">
+            <span class="flex items-center justify-center w-6 h-6 m-auto border border-white rounded-full">
+                <i class="text-white !w-2 !h-2 !min-w-2 !min-h-2 bg-white block rounded-full"></i>
+            </span>
+        </button>
+    </div>
+    <p class="my-4 text-black address">{{ 'companyBranches.add_edit.form.labels.Address' | transloco }} : {{ address }}
+    </p>
+    <div class="w-full mt-5">
+        <button (click)="confirm()" class="bg-[#4F008D] text-white text-xl w-[45%] h-12 me-6 rounded-lg">
+            {{ 'companyBranches.add_edit.form.labels.confirm' | transloco }}
+        </button>
+
+        <button (click)="cancel()"
+            class="text-[#9D90A7] text-xl border-[#9D90A7] border-2 w-[45%] h-12 rounded-lg hover:border-[#4F008D] hover:text-[#4F008D]">
+            {{ 'companyBranches.add_edit.form.labels.cancel' | transloco }}
+        </button>
+    </div>
+
+</div>

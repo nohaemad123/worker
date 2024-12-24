@@ -1,0 +1,11 @@
+{
+    "welcome-back": "Welcome back",
+    "Project": "Project",
+    "Analytics": "Analytics",
+    "daynmicDeilog":{
+        "Congratulations":"Congratulations",
+        "new_company":"A new company has been successfully added.",
+        "Add_company_btn":"Add a company",
+        "show_company_btn":"Show companies"
+       }
+}

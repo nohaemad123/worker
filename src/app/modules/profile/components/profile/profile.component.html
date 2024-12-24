@@ -1,0 +1,86 @@
+<section class="w-full Add_user_section">
+    <div class="w-full p-8 pt-4 pb-0">
+        <div class="breadcrumb">
+            <ul class="flex">
+                <li class="text-[#3C006B] text-[15px] font-bold">
+                    <!-- <a routerLink=""> -->
+                    {{
+                    "profile.breadcrumb.link" | transloco
+                    }}
+                    <!-- </a> -->
+                </li>
+                <span class="mx-2 text-[#6A5C75]">></span>
+                <li class="text-[#6A5C75] text-[15px] font-bold">
+                    {{
+                    "profile.breadcrumb.title_view" | transloco
+                    }}
+                </li>
+            </ul>
+        </div>
+        <div class="bg-[#fff] p-5 radius-[8px] mt-5">
+            <h3 class="text-[#0B0311] text-[16px] font-bold pb-2 border-b border-[#E4DDE9]">
+                {{
+                "profile.breadcrumb.title_view" | transloco
+                }}
+            </h3>
+            <div class="flex flex-wrap mt-4 gap-x-8 gap-y-3 lg:grid lg:grid-cols-2">
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.name" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ userDetails?.name }}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.email" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ userDetails?.email }}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.phone" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ userDetails?.phoneNumber }}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.address" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ userDetails?.address }}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.companyName" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ userDetails?.companyName }}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.branchName" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ userDetails?.brancheNames }}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="block w-full text-[16px] font-medium whitespace-nowrap">
+                        {{ "profile.data.permission" | transloco }}
+                    </p>
+                    <p class="data w-full  bg-[#F8F6F9] border border-[#E4DDE9] h-12 px-5 py-1 mt-3 text-[14px] leading-9 mb-0 rounded-lg font-secondary text-[#030311]">
+                        {{ ('profile.data.' + userDetails?.roles[0]) | transloco }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
